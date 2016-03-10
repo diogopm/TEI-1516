@@ -1,0 +1,16 @@
+<sld_project_info>
+  <project>
+    <hash md5_digest_80b="7da4b92a70164f4bc9f5"/>
+  </project>
+  <file_info>
+    <file device="5CSEMA5F31C6" path="vga.sof" usercode="0xFFFFFFFF"/>
+  </file_info>
+  <sld_infos>
+    <sld_info hpath="pll:vgaclk" name="vgaclk">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME pll HAS_SOPCINFO 1 GENERATION_ID 1456758579"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
+</sld_project_info>

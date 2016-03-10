@@ -1,0 +1,22 @@
+# system info pll on 2016.02.29.15:09:30
+system_info:
+name,value
+DEVICE,5CSEMA5F31C6
+DEVICE_FAMILY,Cyclone V
+GENERATION_ID,1456758539
+#
+#
+# Files generated for pll on 2016.02.29.15:09:30
+files:
+filepath,kind,attributes,module,is_top
+simulation/pll.v,VERILOG,,pll,true
+simulation/submodules/pll_video_pll_0.v,VERILOG,,pll_video_pll_0,false
+simulation/submodules/pll_video_pll_0_video_pll.vo,VERILOG,,pll_video_pll_0_video_pll,false
+simulation/submodules/altera_up_avalon_reset_from_locked_signal.v,VERILOG,,altera_up_avalon_reset_from_locked_signal,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+pll.video_pll_0,pll_video_pll_0
+pll.video_pll_0.video_pll,pll_video_pll_0_video_pll
+pll.video_pll_0.reset_from_locked,altera_up_avalon_reset_from_locked_signal

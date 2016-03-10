@@ -1,0 +1,4520 @@
+// Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, the Altera Quartus Prime License Agreement,
+// the Altera MegaCore Function License Agreement, or other 
+// applicable license agreement, including, without limitation, 
+// that your use is for the sole purpose of programming logic 
+// devices manufactured by Altera and sold by Altera or its 
+// authorized distributors.  Please refer to the applicable 
+// agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 15.1.0 Build 185 10/21/2015 SJ Lite Edition"
+
+// DATE "03/10/2016 11:10:39"
+
+// 
+// Device: Altera 5CSEMA5F31C6 Package FBGA896
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module vga (
+	CLOCK_50,
+	VGA_HS,
+	VGA_VS,
+	VGA_R,
+	VGA_G,
+	VGA_B,
+	VGA_CLK,
+	KEY,
+	SW);
+input 	CLOCK_50;
+output 	VGA_HS;
+output 	VGA_VS;
+output 	[7:0] VGA_R;
+output 	[7:0] VGA_G;
+output 	[7:0] VGA_B;
+output 	VGA_CLK;
+input 	[3:0] KEY;
+input 	[9:0] SW;
+
+// Design Ports Information
+// VGA_HS	=>  Location: PIN_B11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_VS	=>  Location: PIN_D11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[0]	=>  Location: PIN_A13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[1]	=>  Location: PIN_C13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[2]	=>  Location: PIN_E13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[3]	=>  Location: PIN_B12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[4]	=>  Location: PIN_C12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[5]	=>  Location: PIN_D12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[6]	=>  Location: PIN_E12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_R[7]	=>  Location: PIN_F13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[0]	=>  Location: PIN_J9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[1]	=>  Location: PIN_J10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[2]	=>  Location: PIN_H12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[3]	=>  Location: PIN_G10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[4]	=>  Location: PIN_G11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[5]	=>  Location: PIN_G12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[6]	=>  Location: PIN_F11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_G[7]	=>  Location: PIN_E11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[0]	=>  Location: PIN_B13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[1]	=>  Location: PIN_G13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[2]	=>  Location: PIN_H13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[3]	=>  Location: PIN_F14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[4]	=>  Location: PIN_H14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[5]	=>  Location: PIN_F15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[6]	=>  Location: PIN_G15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_B[7]	=>  Location: PIN_J14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// VGA_CLK	=>  Location: PIN_A11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// KEY[0]	=>  Location: PIN_AA14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// KEY[1]	=>  Location: PIN_AA15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// KEY[2]	=>  Location: PIN_W15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// KEY[3]	=>  Location: PIN_Y16,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[0]	=>  Location: PIN_AB12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[1]	=>  Location: PIN_AC12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[2]	=>  Location: PIN_AF9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[3]	=>  Location: PIN_AF10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[4]	=>  Location: PIN_AD11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[5]	=>  Location: PIN_AD12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[6]	=>  Location: PIN_AE11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[7]	=>  Location: PIN_AC9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[8]	=>  Location: PIN_AD10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// SW[9]	=>  Location: PIN_AE12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// CLOCK_50	=>  Location: PIN_AF14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \KEY[0]~input_o ;
+wire \KEY[1]~input_o ;
+wire \KEY[2]~input_o ;
+wire \KEY[3]~input_o ;
+wire \SW[0]~input_o ;
+wire \SW[1]~input_o ;
+wire \SW[2]~input_o ;
+wire \SW[3]~input_o ;
+wire \SW[4]~input_o ;
+wire \SW[5]~input_o ;
+wire \SW[6]~input_o ;
+wire \SW[7]~input_o ;
+wire \SW[8]~input_o ;
+wire \~QUARTUS_CREATED_GND~I_combout ;
+wire \CLOCK_50~input_o ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT_O_EXTSWITCHBUF ;
+wire \SW[9]~input_o ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT_O_CLKOUT ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI2 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI3 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI4 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI5 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI6 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI7 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_UP ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI1 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFTENM ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI0 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFT ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_CNTNEN ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIGSHIFTEN6 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_TCLK ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH0 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH1 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH2 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH3 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH4 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH5 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH6 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH7 ;
+wire \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ;
+wire \video_module|Add0~37_sumout ;
+wire \video_module|Add0~18 ;
+wire \video_module|Add0~13_sumout ;
+wire \video_module|Hpos[7]~DUPLICATE_q ;
+wire \video_module|Add0~14 ;
+wire \video_module|Add0~29_sumout ;
+wire \video_module|Hpos[8]~DUPLICATE_q ;
+wire \video_module|Add0~30 ;
+wire \video_module|Add0~25_sumout ;
+wire \video_module|Add0~26 ;
+wire \video_module|Add0~21_sumout ;
+wire \video_module|LessThan0~0_combout ;
+wire \video_module|Add0~38 ;
+wire \video_module|Add0~33_sumout ;
+wire \video_module|Hpos[1]~DUPLICATE_q ;
+wire \video_module|Add0~34 ;
+wire \video_module|Add0~41_sumout ;
+wire \video_module|Add0~42 ;
+wire \video_module|Add0~9_sumout ;
+wire \video_module|Add0~10 ;
+wire \video_module|Add0~5_sumout ;
+wire \video_module|Add0~6 ;
+wire \video_module|Add0~1_sumout ;
+wire \video_module|Add0~2 ;
+wire \video_module|Add0~17_sumout ;
+wire \video_module|always0~0_combout ;
+wire \video_module|Hpos[5]~DUPLICATE_q ;
+wire \video_module|Hpos[3]~DUPLICATE_q ;
+wire \video_module|always0~1_combout ;
+wire \video_module|Hsync~q ;
+wire \video_module|Add1~41_sumout ;
+wire \video_module|Vpos[0]~DUPLICATE_q ;
+wire \video_module|Add1~42 ;
+wire \video_module|Add1~37_sumout ;
+wire \video_module|Vpos[1]~DUPLICATE_q ;
+wire \video_module|Add1~38 ;
+wire \video_module|Add1~33_sumout ;
+wire \video_module|Add1~34 ;
+wire \video_module|Add1~29_sumout ;
+wire \video_module|Add1~30 ;
+wire \video_module|Add1~25_sumout ;
+wire \video_module|Add1~26 ;
+wire \video_module|Add1~9_sumout ;
+wire \video_module|Add1~10 ;
+wire \video_module|Add1~21_sumout ;
+wire \video_module|Vpos[6]~DUPLICATE_q ;
+wire \video_module|Add1~22 ;
+wire \video_module|Add1~17_sumout ;
+wire \video_module|Add1~18 ;
+wire \video_module|Add1~5_sumout ;
+wire \video_module|Add1~6 ;
+wire \video_module|Add1~2 ;
+wire \video_module|Add1~13_sumout ;
+wire \video_module|Equal0~0_combout ;
+wire \video_module|Equal0~2_combout ;
+wire \video_module|Equal0~1_combout ;
+wire \video_module|Equal0~3_combout ;
+wire \video_module|Add1~1_sumout ;
+wire \video_module|Vpos[9]~DUPLICATE_q ;
+wire \video_module|always0~2_combout ;
+wire \video_module|always0~3_combout ;
+wire \video_module|Vsync~q ;
+wire \video_module|Hpos[4]~DUPLICATE_q ;
+wire \video_module|Hpos[2]~DUPLICATE_q ;
+wire \video_module|LessThan11~0_combout ;
+wire \video_module|always0~10_combout ;
+wire \video_module|Add3~3_combout ;
+wire \video_module|always0~9_combout ;
+wire \video_module|LessThan0~1_combout ;
+wire \video_module|Add3~2_combout ;
+wire \video_module|Add3~1_combout ;
+wire \video_module|Add3~0_combout ;
+wire \video_module|posX[6]~1_combout ;
+wire \video_module|always0~5_combout ;
+wire \video_module|R~0_combout ;
+wire \video_module|R~1_combout ;
+wire \video_module|Vpos[2]~DUPLICATE_q ;
+wire \video_module|Add5~30 ;
+wire \video_module|Add5~26 ;
+wire \video_module|Add5~22 ;
+wire \video_module|Add5~18 ;
+wire \video_module|Add5~14 ;
+wire \video_module|Add5~10 ;
+wire \video_module|Add5~6 ;
+wire \video_module|Add5~42 ;
+wire \video_module|Add5~38 ;
+wire \video_module|Add5~34 ;
+wire \video_module|Add5~1_sumout ;
+wire \video_module|Add5~33_sumout ;
+wire \video_module|Add5~37_sumout ;
+wire \video_module|Add5~41_sumout ;
+wire \video_module|Add5~5_sumout ;
+wire \video_module|Add5~9_sumout ;
+wire \video_module|Add5~13_sumout ;
+wire \video_module|Add5~17_sumout ;
+wire \video_module|Add5~21_sumout ;
+wire \video_module|Add5~25_sumout ;
+wire \video_module|Add6~6 ;
+wire \video_module|Add6~7 ;
+wire \video_module|Add6~10 ;
+wire \video_module|Add6~11 ;
+wire \video_module|Add6~18 ;
+wire \video_module|Add6~19 ;
+wire \video_module|Add6~22 ;
+wire \video_module|Add6~23 ;
+wire \video_module|Add6~14 ;
+wire \video_module|Add6~15 ;
+wire \video_module|Add6~26 ;
+wire \video_module|Add6~27 ;
+wire \video_module|Add6~30 ;
+wire \video_module|Add6~31 ;
+wire \video_module|Add6~34 ;
+wire \video_module|Add6~35 ;
+wire \video_module|Add6~38 ;
+wire \video_module|Add6~39 ;
+wire \video_module|Add6~42 ;
+wire \video_module|Add6~43 ;
+wire \video_module|Add6~1_sumout ;
+wire \video_module|LessThan15~1_combout ;
+wire \video_module|always0~6_combout ;
+wire \video_module|Add5~29_sumout ;
+wire \video_module|LessThan15~0_combout ;
+wire \video_module|always0~4_combout ;
+wire \video_module|always0~7_combout ;
+wire \video_module|always0~8_combout ;
+wire \video_module|Add6~9_sumout ;
+wire \video_module|Add6~13_sumout ;
+wire \video_module|Add6~21_sumout ;
+wire \video_module|Add6~5_sumout ;
+wire \video_module|Add6~17_sumout ;
+wire \video_module|draw~0_combout ;
+wire \video_module|Add3~4_combout ;
+wire \video_module|Add4~14 ;
+wire \video_module|Add4~18 ;
+wire \video_module|Add4~22 ;
+wire \video_module|Add4~26 ;
+wire \video_module|Add4~2 ;
+wire \video_module|Add4~38 ;
+wire \video_module|Add4~42 ;
+wire \video_module|Add4~30 ;
+wire \video_module|Add4~34 ;
+wire \video_module|Add4~5_sumout ;
+wire \video_module|Add4~6 ;
+wire \video_module|Add4~9_sumout ;
+wire \video_module|Add4~17_sumout ;
+wire \video_module|Add4~25_sumout ;
+wire \video_module|Add4~13_sumout ;
+wire \video_module|Add4~21_sumout ;
+wire \video_module|draw~1_combout ;
+wire \video_module|Add4~1_sumout ;
+wire \video_module|Add6~29_sumout ;
+wire \video_module|Add6~25_sumout ;
+wire \video_module|draw~2_combout ;
+wire \video_module|Add6~33_sumout ;
+wire \video_module|Add4~41_sumout ;
+wire \video_module|Add4~37_sumout ;
+wire \video_module|draw~3_combout ;
+wire \video_module|Add4~29_sumout ;
+wire \video_module|Add4~33_sumout ;
+wire \video_module|Add6~41_sumout ;
+wire \video_module|Add6~37_sumout ;
+wire \video_module|draw~4_combout ;
+wire \video_module|R~2_combout ;
+wire [10:0] \video_module|Hpos ;
+wire [10:0] \video_module|Vpos ;
+wire [7:0] \video_module|B ;
+wire [10:0] \video_module|posX ;
+wire [2:0] \vgaclk|video_pll_0|video_pll|altera_pll_i|fboutclk_wire ;
+wire [10:0] \video_module|posY ;
+wire [2:0] \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire ;
+
+wire [7:0] \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus ;
+wire [7:0] \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus ;
+wire [8:0] \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_SHIFTEN_bus ;
+
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH0  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [0];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH1  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [1];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH2  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [2];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH3  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [3];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH4  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [4];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH5  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [5];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH6  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [6];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH7  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus [7];
+
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI0  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [0];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI1  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [1];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI2  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [2];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI3  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [3];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI4  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [4];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI5  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [5];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI6  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [6];
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI7  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus [7];
+
+assign \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIGSHIFTEN6  = \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_SHIFTEN_bus [6];
+
+// Location: IOOBUF_X36_Y81_N53
+cyclonev_io_obuf \VGA_HS~output (
+	.i(\video_module|Hsync~q ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_HS),
+	.obar());
+// synopsys translate_off
+defparam \VGA_HS~output .bus_hold = "false";
+defparam \VGA_HS~output .open_drain_output = "false";
+defparam \VGA_HS~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X34_Y81_N42
+cyclonev_io_obuf \VGA_VS~output (
+	.i(\video_module|Vsync~q ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_VS),
+	.obar());
+// synopsys translate_off
+defparam \VGA_VS~output .bus_hold = "false";
+defparam \VGA_VS~output .open_drain_output = "false";
+defparam \VGA_VS~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X40_Y81_N53
+cyclonev_io_obuf \VGA_R[0]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[0]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[0]~output .bus_hold = "false";
+defparam \VGA_R[0]~output .open_drain_output = "false";
+defparam \VGA_R[0]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X38_Y81_N2
+cyclonev_io_obuf \VGA_R[1]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[1]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[1]~output .bus_hold = "false";
+defparam \VGA_R[1]~output .open_drain_output = "false";
+defparam \VGA_R[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X26_Y81_N59
+cyclonev_io_obuf \VGA_R[2]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[2]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[2]~output .bus_hold = "false";
+defparam \VGA_R[2]~output .open_drain_output = "false";
+defparam \VGA_R[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X38_Y81_N19
+cyclonev_io_obuf \VGA_R[3]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[3]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[3]~output .bus_hold = "false";
+defparam \VGA_R[3]~output .open_drain_output = "false";
+defparam \VGA_R[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N36
+cyclonev_io_obuf \VGA_R[4]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[4]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[4]~output .bus_hold = "false";
+defparam \VGA_R[4]~output .open_drain_output = "false";
+defparam \VGA_R[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X22_Y81_N19
+cyclonev_io_obuf \VGA_R[5]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[5]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[5]~output .bus_hold = "false";
+defparam \VGA_R[5]~output .open_drain_output = "false";
+defparam \VGA_R[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X22_Y81_N2
+cyclonev_io_obuf \VGA_R[6]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[6]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[6]~output .bus_hold = "false";
+defparam \VGA_R[6]~output .open_drain_output = "false";
+defparam \VGA_R[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X26_Y81_N42
+cyclonev_io_obuf \VGA_R[7]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_R[7]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_R[7]~output .bus_hold = "false";
+defparam \VGA_R[7]~output .open_drain_output = "false";
+defparam \VGA_R[7]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X4_Y81_N19
+cyclonev_io_obuf \VGA_G[0]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[0]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[0]~output .bus_hold = "false";
+defparam \VGA_G[0]~output .open_drain_output = "false";
+defparam \VGA_G[0]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X4_Y81_N2
+cyclonev_io_obuf \VGA_G[1]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[1]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[1]~output .bus_hold = "false";
+defparam \VGA_G[1]~output .open_drain_output = "false";
+defparam \VGA_G[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X20_Y81_N19
+cyclonev_io_obuf \VGA_G[2]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[2]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[2]~output .bus_hold = "false";
+defparam \VGA_G[2]~output .open_drain_output = "false";
+defparam \VGA_G[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X6_Y81_N2
+cyclonev_io_obuf \VGA_G[3]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[3]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[3]~output .bus_hold = "false";
+defparam \VGA_G[3]~output .open_drain_output = "false";
+defparam \VGA_G[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X10_Y81_N59
+cyclonev_io_obuf \VGA_G[4]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[4]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[4]~output .bus_hold = "false";
+defparam \VGA_G[4]~output .open_drain_output = "false";
+defparam \VGA_G[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X10_Y81_N42
+cyclonev_io_obuf \VGA_G[5]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[5]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[5]~output .bus_hold = "false";
+defparam \VGA_G[5]~output .open_drain_output = "false";
+defparam \VGA_G[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X18_Y81_N42
+cyclonev_io_obuf \VGA_G[6]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[6]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[6]~output .bus_hold = "false";
+defparam \VGA_G[6]~output .open_drain_output = "false";
+defparam \VGA_G[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X18_Y81_N59
+cyclonev_io_obuf \VGA_G[7]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_G[7]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_G[7]~output .bus_hold = "false";
+defparam \VGA_G[7]~output .open_drain_output = "false";
+defparam \VGA_G[7]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X40_Y81_N36
+cyclonev_io_obuf \VGA_B[0]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[0]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[0]~output .bus_hold = "false";
+defparam \VGA_B[0]~output .open_drain_output = "false";
+defparam \VGA_B[0]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X28_Y81_N19
+cyclonev_io_obuf \VGA_B[1]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[1]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[1]~output .bus_hold = "false";
+defparam \VGA_B[1]~output .open_drain_output = "false";
+defparam \VGA_B[1]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X20_Y81_N2
+cyclonev_io_obuf \VGA_B[2]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[2]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[2]~output .bus_hold = "false";
+defparam \VGA_B[2]~output .open_drain_output = "false";
+defparam \VGA_B[2]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N19
+cyclonev_io_obuf \VGA_B[3]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[3]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[3]~output .bus_hold = "false";
+defparam \VGA_B[3]~output .open_drain_output = "false";
+defparam \VGA_B[3]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X28_Y81_N2
+cyclonev_io_obuf \VGA_B[4]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[4]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[4]~output .bus_hold = "false";
+defparam \VGA_B[4]~output .open_drain_output = "false";
+defparam \VGA_B[4]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X36_Y81_N2
+cyclonev_io_obuf \VGA_B[5]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[5]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[5]~output .bus_hold = "false";
+defparam \VGA_B[5]~output .open_drain_output = "false";
+defparam \VGA_B[5]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X40_Y81_N19
+cyclonev_io_obuf \VGA_B[6]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[6]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[6]~output .bus_hold = "false";
+defparam \VGA_B[6]~output .open_drain_output = "false";
+defparam \VGA_B[6]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X32_Y81_N19
+cyclonev_io_obuf \VGA_B[7]~output (
+	.i(\video_module|B [0]),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_B[7]),
+	.obar());
+// synopsys translate_off
+defparam \VGA_B[7]~output .bus_hold = "false";
+defparam \VGA_B[7]~output .open_drain_output = "false";
+defparam \VGA_B[7]~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X38_Y81_N36
+cyclonev_io_obuf \VGA_CLK~output (
+	.i(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.oe(vcc),
+	.dynamicterminationcontrol(gnd),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.parallelterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(VGA_CLK),
+	.obar());
+// synopsys translate_off
+defparam \VGA_CLK~output .bus_hold = "false";
+defparam \VGA_CLK~output .open_drain_output = "false";
+defparam \VGA_CLK~output .shift_series_termination_control = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X32_Y0_N1
+cyclonev_io_ibuf \CLOCK_50~input (
+	.i(CLOCK_50),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\CLOCK_50~input_o ));
+// synopsys translate_off
+defparam \CLOCK_50~input .bus_hold = "false";
+defparam \CLOCK_50~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: PLLREFCLKSELECT_X0_Y21_N0
+cyclonev_pll_refclk_select \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT (
+	.adjpllin(gnd),
+	.cclk(gnd),
+	.coreclkin(gnd),
+	.extswitch(gnd),
+	.iqtxrxclkin(gnd),
+	.plliqclkin(gnd),
+	.rxiqclkin(gnd),
+	.clkin({gnd,gnd,gnd,\CLOCK_50~input_o }),
+	.refiqclk(2'b00),
+	.clk0bad(),
+	.clk1bad(),
+	.clkout(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT_O_CLKOUT ),
+	.extswitchbuf(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT_O_EXTSWITCHBUF ),
+	.pllclksel());
+// synopsys translate_off
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_auto_clk_sw_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_clk_loss_edge = "both_edges";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_clk_loss_sw_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_clk_sw_dly = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_clkin_0_src = "clk_0";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_clkin_1_src = "ref_clk1";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_manu_clk_sw_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT .pll_sw_refclk_src = "clk_0";
+// synopsys translate_on
+
+// Location: IOIBUF_X2_Y0_N58
+cyclonev_io_ibuf \SW[9]~input (
+	.i(SW[9]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[9]~input_o ));
+// synopsys translate_off
+defparam \SW[9]~input .bus_hold = "false";
+defparam \SW[9]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: FRACTIONALPLL_X0_Y15_N0
+cyclonev_fractional_pll \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL (
+	.coreclkfb(\vgaclk|video_pll_0|video_pll|altera_pll_i|fboutclk_wire [0]),
+	.ecnc1test(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT_O_EXTSWITCHBUF ),
+	.ecnc2test(gnd),
+	.fbclkfpll(gnd),
+	.lvdsfbin(gnd),
+	.nresync(\SW[9]~input_o ),
+	.pfden(gnd),
+	.refclkin(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT_O_CLKOUT ),
+	.shift(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFT ),
+	.shiftdonein(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFT ),
+	.shiften(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFTENM ),
+	.up(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_UP ),
+	.zdb(gnd),
+	.cntnen(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_CNTNEN ),
+	.fbclk(\vgaclk|video_pll_0|video_pll|altera_pll_i|fboutclk_wire [0]),
+	.fblvdsout(),
+	.lock(),
+	.mcntout(),
+	.plniotribuf(),
+	.shiftdoneout(),
+	.tclk(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_TCLK ),
+	.mhi(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_MHI_bus ),
+	.vcoph(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_VCOPH_bus ));
+// synopsys translate_off
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .dsm_accumulator_reset_value = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .forcelock = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .mimic_fbclk_type = "none";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .nreset_invert = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .output_clock_frequency = "325.0 mhz";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_atb = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_bwctrl = 4000;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_cmp_buf_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_cp_comp = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_cp_current = 20;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_ctrl_override_setting = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_dsm_dither = "disable";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_dsm_out_sel = "disable";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_dsm_reset = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_ecn_bypass = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_ecn_test_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_enable = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_fbclk_mux_1 = "glb";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_fbclk_mux_2 = "m_cnt";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_fractional_carry_out = 32;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_fractional_division = 1;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_fractional_division_string = "'0'";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_fractional_value_ready = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_lf_testen = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_lock_fltr_cfg = 25;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_lock_fltr_test = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_bypass_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_coarse_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_fine_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_hi_div = 7;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_in_src = "ph_mux_clk";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_lo_div = 6;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_odd_div_duty_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_ph_mux_prst = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_m_cnt_prst = 1;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_n_cnt_bypass_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_n_cnt_coarse_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_n_cnt_fine_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_n_cnt_hi_div = 1;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_n_cnt_lo_div = 1;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_n_cnt_odd_div_duty_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_ref_buf_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_reg_boost = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_regulator_bypass = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_ripplecap_ctrl = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_slf_rst = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_tclk_mux_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_tclk_sel = "n_src";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_test_enable = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_testdn_enable = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_testup_enable = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_unlock_fltr_cfg = 2;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_div = 2;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph0_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph1_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph2_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph3_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph4_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph5_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph6_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vco_ph7_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .pll_vctrl_test_voltage = 750;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .reference_clock_frequency = "50.0 mhz";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vccd0g_atb = "disable";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vccd0g_output = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vccd1g_atb = "disable";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vccd1g_output = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vccm1g_tap = 2;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vccr_pd = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .vcodiv_override = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL .fractional_pll_index = 0;
+// synopsys translate_on
+
+// Location: PLLRECONFIG_X0_Y19_N0
+cyclonev_pll_reconfig \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG (
+	.atpgmode(gnd),
+	.clk(gnd),
+	.cntnen(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_CNTNEN ),
+	.fpllcsrtest(gnd),
+	.iocsrclkin(gnd),
+	.iocsrdatain(gnd),
+	.iocsren(gnd),
+	.iocsrrstn(gnd),
+	.mdiodis(gnd),
+	.phaseen(gnd),
+	.read(gnd),
+	.rstn(gnd),
+	.scanen(gnd),
+	.sershiftload(gnd),
+	.shiftdonei(gnd),
+	.updn(gnd),
+	.write(gnd),
+	.addr(6'b000000),
+	.byteen(2'b00),
+	.cntsel(5'b00000),
+	.din(16'b0000000000000000),
+	.mhi({\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI7 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI6 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI5 ,
+\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI4 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI3 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI2 ,
+\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI1 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_MHI0 }),
+	.blockselect(),
+	.iocsrdataout(),
+	.iocsrenbuf(),
+	.iocsrrstnbuf(),
+	.phasedone(),
+	.shift(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFT ),
+	.shiftenm(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFTENM ),
+	.up(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_UP ),
+	.dout(),
+	.dprioout(),
+	.shiften(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_SHIFTEN_bus ));
+// synopsys translate_off
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG .fractional_pll_index = 0;
+// synopsys translate_on
+
+// Location: PLLOUTPUTCOUNTER_X0_Y20_N1
+cyclonev_pll_output_counter \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER (
+	.cascadein(gnd),
+	.nen0(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_CNTNEN ),
+	.shift0(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_SHIFT ),
+	.shiftdone0i(gnd),
+	.shiften(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIGSHIFTEN6 ),
+	.tclk0(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_TCLK ),
+	.up0(\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~PLL_RECONFIG_O_UP ),
+	.vco0ph({\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH7 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH6 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH5 ,
+\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH4 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH3 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH2 ,
+\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH1 ,\vgaclk|video_pll_0|video_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL_O_VCOPH0 }),
+	.cascadeout(),
+	.divclk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire [1]),
+	.shiftdone0o());
+// synopsys translate_off
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .c_cnt_coarse_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .c_cnt_fine_dly = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .c_cnt_in_src = "ph_mux_clk";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .c_cnt_ph_mux_prst = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .c_cnt_prst = 1;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .cnt_fpll_src = "fpll_0";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .dprio0_cnt_bypass_en = "false";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .dprio0_cnt_hi_div = 3;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .dprio0_cnt_lo_div = 2;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .dprio0_cnt_odd_div_even_duty_en = "true";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .duty_cycle = 50;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .output_clock_frequency = "65.0 mhz";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .phase_shift = "0 ps";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .fractional_pll_index = 0;
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER .output_counter_index = 6;
+// synopsys translate_on
+
+// Location: CLKCTRL_G6
+cyclonev_clkena \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0 (
+	.inclk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire [1]),
+	.ena(vcc),
+	.outclk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.enaout());
+// synopsys translate_off
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0 .clock_type = "global clock";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0 .disable_mode = "low";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0 .ena_register_mode = "always enabled";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0 .ena_register_power_up = "high";
+defparam \vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0 .test_syn = "high";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N0
+cyclonev_lcell_comb \video_module|Add0~37 (
+// Equation(s):
+// \video_module|Add0~37_sumout  = SUM(( \video_module|Hpos [0] ) + ( VCC ) + ( !VCC ))
+// \video_module|Add0~38  = CARRY(( \video_module|Hpos [0] ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [0]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~37_sumout ),
+	.cout(\video_module|Add0~38 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~37 .extended_lut = "off";
+defparam \video_module|Add0~37 .lut_mask = 64'h0000000000000F0F;
+defparam \video_module|Add0~37 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N18
+cyclonev_lcell_comb \video_module|Add0~17 (
+// Equation(s):
+// \video_module|Add0~17_sumout  = SUM(( \video_module|Hpos [6] ) + ( GND ) + ( \video_module|Add0~2  ))
+// \video_module|Add0~18  = CARRY(( \video_module|Hpos [6] ) + ( GND ) + ( \video_module|Add0~2  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [6]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~2 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~17_sumout ),
+	.cout(\video_module|Add0~18 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~17 .extended_lut = "off";
+defparam \video_module|Add0~17 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add0~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N21
+cyclonev_lcell_comb \video_module|Add0~13 (
+// Equation(s):
+// \video_module|Add0~13_sumout  = SUM(( \video_module|Hpos[7]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add0~18  ))
+// \video_module|Add0~14  = CARRY(( \video_module|Hpos[7]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add0~18  ))
+
+	.dataa(!\video_module|Hpos[7]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~18 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~13_sumout ),
+	.cout(\video_module|Add0~14 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~13 .extended_lut = "off";
+defparam \video_module|Add0~13 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add0~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N23
+dffeas \video_module|Hpos[7]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~13_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[7]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[7]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[7]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N24
+cyclonev_lcell_comb \video_module|Add0~29 (
+// Equation(s):
+// \video_module|Add0~29_sumout  = SUM(( \video_module|Hpos[8]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add0~14  ))
+// \video_module|Add0~30  = CARRY(( \video_module|Hpos[8]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add0~14  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~14 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~29_sumout ),
+	.cout(\video_module|Add0~30 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~29 .extended_lut = "off";
+defparam \video_module|Add0~29 .lut_mask = 64'h0000FFFF00003333;
+defparam \video_module|Add0~29 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N25
+dffeas \video_module|Hpos[8]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~29_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[8]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[8]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[8]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N27
+cyclonev_lcell_comb \video_module|Add0~25 (
+// Equation(s):
+// \video_module|Add0~25_sumout  = SUM(( \video_module|Hpos [9] ) + ( GND ) + ( \video_module|Add0~30  ))
+// \video_module|Add0~26  = CARRY(( \video_module|Hpos [9] ) + ( GND ) + ( \video_module|Add0~30  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [9]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~30 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~25_sumout ),
+	.cout(\video_module|Add0~26 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~25 .extended_lut = "off";
+defparam \video_module|Add0~25 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add0~25 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N28
+dffeas \video_module|Hpos[9] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~25_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [9]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[9] .is_wysiwyg = "true";
+defparam \video_module|Hpos[9] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N30
+cyclonev_lcell_comb \video_module|Add0~21 (
+// Equation(s):
+// \video_module|Add0~21_sumout  = SUM(( \video_module|Hpos [10] ) + ( GND ) + ( \video_module|Add0~26  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [10]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~26 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~21_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~21 .extended_lut = "off";
+defparam \video_module|Add0~21 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add0~21 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N31
+dffeas \video_module|Hpos[10] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~21_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [10]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[10] .is_wysiwyg = "true";
+defparam \video_module|Hpos[10] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N45
+cyclonev_lcell_comb \video_module|LessThan0~0 (
+// Equation(s):
+// \video_module|LessThan0~0_combout  = ( \video_module|Hpos [6] & ( (\video_module|Hpos [10] & ((\video_module|Hpos [9]) # (\video_module|Hpos[8]~DUPLICATE_q ))) ) ) # ( !\video_module|Hpos [6] & ( (\video_module|Hpos [10] & 
+// (((\video_module|Hpos[8]~DUPLICATE_q  & \video_module|Hpos[7]~DUPLICATE_q )) # (\video_module|Hpos [9]))) ) )
+
+	.dataa(!\video_module|Hpos [10]),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(!\video_module|Hpos [9]),
+	.datad(!\video_module|Hpos[7]~DUPLICATE_q ),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [6]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|LessThan0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|LessThan0~0 .extended_lut = "off";
+defparam \video_module|LessThan0~0 .lut_mask = 64'h0515051515151515;
+defparam \video_module|LessThan0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N1
+dffeas \video_module|Hpos[0] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~37_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[0] .is_wysiwyg = "true";
+defparam \video_module|Hpos[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N3
+cyclonev_lcell_comb \video_module|Add0~33 (
+// Equation(s):
+// \video_module|Add0~33_sumout  = SUM(( \video_module|Hpos[1]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add0~38  ))
+// \video_module|Add0~34  = CARRY(( \video_module|Hpos[1]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add0~38  ))
+
+	.dataa(!\video_module|Hpos[1]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~38 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~33_sumout ),
+	.cout(\video_module|Add0~34 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~33 .extended_lut = "off";
+defparam \video_module|Add0~33 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add0~33 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N5
+dffeas \video_module|Hpos[1]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~33_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[1]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[1]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[1]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N6
+cyclonev_lcell_comb \video_module|Add0~41 (
+// Equation(s):
+// \video_module|Add0~41_sumout  = SUM(( \video_module|Hpos [2] ) + ( GND ) + ( \video_module|Add0~34  ))
+// \video_module|Add0~42  = CARRY(( \video_module|Hpos [2] ) + ( GND ) + ( \video_module|Add0~34  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos [2]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~34 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~41_sumout ),
+	.cout(\video_module|Add0~42 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~41 .extended_lut = "off";
+defparam \video_module|Add0~41 .lut_mask = 64'h0000FFFF00003333;
+defparam \video_module|Add0~41 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N8
+dffeas \video_module|Hpos[2] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~41_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[2] .is_wysiwyg = "true";
+defparam \video_module|Hpos[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N9
+cyclonev_lcell_comb \video_module|Add0~9 (
+// Equation(s):
+// \video_module|Add0~9_sumout  = SUM(( \video_module|Hpos [3] ) + ( GND ) + ( \video_module|Add0~42  ))
+// \video_module|Add0~10  = CARRY(( \video_module|Hpos [3] ) + ( GND ) + ( \video_module|Add0~42  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [3]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~42 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~9_sumout ),
+	.cout(\video_module|Add0~10 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~9 .extended_lut = "off";
+defparam \video_module|Add0~9 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add0~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N11
+dffeas \video_module|Hpos[3] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~9_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[3] .is_wysiwyg = "true";
+defparam \video_module|Hpos[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N12
+cyclonev_lcell_comb \video_module|Add0~5 (
+// Equation(s):
+// \video_module|Add0~5_sumout  = SUM(( \video_module|Hpos [4] ) + ( GND ) + ( \video_module|Add0~10  ))
+// \video_module|Add0~6  = CARRY(( \video_module|Hpos [4] ) + ( GND ) + ( \video_module|Add0~10  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos [4]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~10 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~5_sumout ),
+	.cout(\video_module|Add0~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~5 .extended_lut = "off";
+defparam \video_module|Add0~5 .lut_mask = 64'h0000FFFF00003333;
+defparam \video_module|Add0~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N14
+dffeas \video_module|Hpos[4] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~5_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[4] .is_wysiwyg = "true";
+defparam \video_module|Hpos[4] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N15
+cyclonev_lcell_comb \video_module|Add0~1 (
+// Equation(s):
+// \video_module|Add0~1_sumout  = SUM(( \video_module|Hpos [5] ) + ( GND ) + ( \video_module|Add0~6  ))
+// \video_module|Add0~2  = CARRY(( \video_module|Hpos [5] ) + ( GND ) + ( \video_module|Add0~6  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [5]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add0~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add0~1_sumout ),
+	.cout(\video_module|Add0~2 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add0~1 .extended_lut = "off";
+defparam \video_module|Add0~1 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N17
+dffeas \video_module|Hpos[5] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~1_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[5] .is_wysiwyg = "true";
+defparam \video_module|Hpos[5] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N20
+dffeas \video_module|Hpos[6] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~17_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[6] .is_wysiwyg = "true";
+defparam \video_module|Hpos[6] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N42
+cyclonev_lcell_comb \video_module|always0~0 (
+// Equation(s):
+// \video_module|always0~0_combout  = ( !\video_module|Hpos [9] & ( (!\video_module|Hpos [10] & !\video_module|Hpos[8]~DUPLICATE_q ) ) )
+
+	.dataa(!\video_module|Hpos [10]),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [9]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~0 .extended_lut = "off";
+defparam \video_module|always0~0 .lut_mask = 64'h8888888800000000;
+defparam \video_module|always0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N16
+dffeas \video_module|Hpos[5]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~1_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[5]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[5]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[5]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N10
+dffeas \video_module|Hpos[3]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~9_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[3]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[3]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[3]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N36
+cyclonev_lcell_comb \video_module|always0~1 (
+// Equation(s):
+// \video_module|always0~1_combout  = ( \video_module|Hpos[3]~DUPLICATE_q  & ( \video_module|Hpos [4] & ( (!\video_module|always0~0_combout ) # ((\video_module|Hpos[7]~DUPLICATE_q  & ((\video_module|Hpos[5]~DUPLICATE_q ) # (\video_module|Hpos [6])))) ) ) ) # 
+// ( !\video_module|Hpos[3]~DUPLICATE_q  & ( \video_module|Hpos [4] & ( (!\video_module|always0~0_combout ) # (!\video_module|Hpos[7]~DUPLICATE_q  $ (((\video_module|Hpos[5]~DUPLICATE_q ) # (\video_module|Hpos [6])))) ) ) ) # ( 
+// \video_module|Hpos[3]~DUPLICATE_q  & ( !\video_module|Hpos [4] & ( (!\video_module|always0~0_combout ) # (!\video_module|Hpos[7]~DUPLICATE_q  $ (((\video_module|Hpos[5]~DUPLICATE_q ) # (\video_module|Hpos [6])))) ) ) ) # ( 
+// !\video_module|Hpos[3]~DUPLICATE_q  & ( !\video_module|Hpos [4] & ( (!\video_module|always0~0_combout ) # (!\video_module|Hpos[7]~DUPLICATE_q  $ (((\video_module|Hpos[5]~DUPLICATE_q ) # (\video_module|Hpos [6])))) ) ) )
+
+	.dataa(!\video_module|Hpos [6]),
+	.datab(!\video_module|always0~0_combout ),
+	.datac(!\video_module|Hpos[7]~DUPLICATE_q ),
+	.datad(!\video_module|Hpos[5]~DUPLICATE_q ),
+	.datae(!\video_module|Hpos[3]~DUPLICATE_q ),
+	.dataf(!\video_module|Hpos [4]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~1 .extended_lut = "off";
+defparam \video_module|always0~1 .lut_mask = 64'hEDCFEDCFEDCFCDCF;
+defparam \video_module|always0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N37
+dffeas \video_module|Hsync (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|always0~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hsync~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hsync .is_wysiwyg = "true";
+defparam \video_module|Hsync .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N0
+cyclonev_lcell_comb \video_module|Add1~41 (
+// Equation(s):
+// \video_module|Add1~41_sumout  = SUM(( \video_module|Vpos[0]~DUPLICATE_q  ) + ( VCC ) + ( !VCC ))
+// \video_module|Add1~42  = CARRY(( \video_module|Vpos[0]~DUPLICATE_q  ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos[0]~DUPLICATE_q ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~41_sumout ),
+	.cout(\video_module|Add1~42 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~41 .extended_lut = "off";
+defparam \video_module|Add1~41 .lut_mask = 64'h0000000000000F0F;
+defparam \video_module|Add1~41 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N2
+dffeas \video_module|Vpos[0]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~41_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos[0]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[0]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Vpos[0]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N3
+cyclonev_lcell_comb \video_module|Add1~37 (
+// Equation(s):
+// \video_module|Add1~37_sumout  = SUM(( \video_module|Vpos[1]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add1~42  ))
+// \video_module|Add1~38  = CARRY(( \video_module|Vpos[1]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add1~42  ))
+
+	.dataa(!\video_module|Vpos[1]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~42 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~37_sumout ),
+	.cout(\video_module|Add1~38 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~37 .extended_lut = "off";
+defparam \video_module|Add1~37 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add1~37 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N5
+dffeas \video_module|Vpos[1]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~37_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos[1]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[1]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Vpos[1]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N6
+cyclonev_lcell_comb \video_module|Add1~33 (
+// Equation(s):
+// \video_module|Add1~33_sumout  = SUM(( \video_module|Vpos [2] ) + ( GND ) + ( \video_module|Add1~38  ))
+// \video_module|Add1~34  = CARRY(( \video_module|Vpos [2] ) + ( GND ) + ( \video_module|Add1~38  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Vpos [2]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~38 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~33_sumout ),
+	.cout(\video_module|Add1~34 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~33 .extended_lut = "off";
+defparam \video_module|Add1~33 .lut_mask = 64'h0000FFFF00003333;
+defparam \video_module|Add1~33 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N8
+dffeas \video_module|Vpos[2] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~33_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[2] .is_wysiwyg = "true";
+defparam \video_module|Vpos[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N9
+cyclonev_lcell_comb \video_module|Add1~29 (
+// Equation(s):
+// \video_module|Add1~29_sumout  = SUM(( \video_module|Vpos [3] ) + ( GND ) + ( \video_module|Add1~34  ))
+// \video_module|Add1~30  = CARRY(( \video_module|Vpos [3] ) + ( GND ) + ( \video_module|Add1~34  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [3]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~34 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~29_sumout ),
+	.cout(\video_module|Add1~30 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~29 .extended_lut = "off";
+defparam \video_module|Add1~29 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add1~29 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N11
+dffeas \video_module|Vpos[3] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~29_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[3] .is_wysiwyg = "true";
+defparam \video_module|Vpos[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N12
+cyclonev_lcell_comb \video_module|Add1~25 (
+// Equation(s):
+// \video_module|Add1~25_sumout  = SUM(( \video_module|Vpos [4] ) + ( GND ) + ( \video_module|Add1~30  ))
+// \video_module|Add1~26  = CARRY(( \video_module|Vpos [4] ) + ( GND ) + ( \video_module|Add1~30  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [4]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~30 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~25_sumout ),
+	.cout(\video_module|Add1~26 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~25 .extended_lut = "off";
+defparam \video_module|Add1~25 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add1~25 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N13
+dffeas \video_module|Vpos[4] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~25_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[4] .is_wysiwyg = "true";
+defparam \video_module|Vpos[4] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N20
+dffeas \video_module|Vpos[6] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~21_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[6] .is_wysiwyg = "true";
+defparam \video_module|Vpos[6] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N15
+cyclonev_lcell_comb \video_module|Add1~9 (
+// Equation(s):
+// \video_module|Add1~9_sumout  = SUM(( \video_module|Vpos [5] ) + ( GND ) + ( \video_module|Add1~26  ))
+// \video_module|Add1~10  = CARRY(( \video_module|Vpos [5] ) + ( GND ) + ( \video_module|Add1~26  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [5]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~26 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~9_sumout ),
+	.cout(\video_module|Add1~10 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~9 .extended_lut = "off";
+defparam \video_module|Add1~9 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add1~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N17
+dffeas \video_module|Vpos[5] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~9_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[5] .is_wysiwyg = "true";
+defparam \video_module|Vpos[5] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N18
+cyclonev_lcell_comb \video_module|Add1~21 (
+// Equation(s):
+// \video_module|Add1~21_sumout  = SUM(( \video_module|Vpos [6] ) + ( GND ) + ( \video_module|Add1~10  ))
+// \video_module|Add1~22  = CARRY(( \video_module|Vpos [6] ) + ( GND ) + ( \video_module|Add1~10  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [6]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~10 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~21_sumout ),
+	.cout(\video_module|Add1~22 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~21 .extended_lut = "off";
+defparam \video_module|Add1~21 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add1~21 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N19
+dffeas \video_module|Vpos[6]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~21_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos[6]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[6]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Vpos[6]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N21
+cyclonev_lcell_comb \video_module|Add1~17 (
+// Equation(s):
+// \video_module|Add1~17_sumout  = SUM(( \video_module|Vpos [7] ) + ( GND ) + ( \video_module|Add1~22  ))
+// \video_module|Add1~18  = CARRY(( \video_module|Vpos [7] ) + ( GND ) + ( \video_module|Add1~22  ))
+
+	.dataa(!\video_module|Vpos [7]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~22 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~17_sumout ),
+	.cout(\video_module|Add1~18 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~17 .extended_lut = "off";
+defparam \video_module|Add1~17 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add1~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N23
+dffeas \video_module|Vpos[7] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~17_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [7]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[7] .is_wysiwyg = "true";
+defparam \video_module|Vpos[7] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N24
+cyclonev_lcell_comb \video_module|Add1~5 (
+// Equation(s):
+// \video_module|Add1~5_sumout  = SUM(( \video_module|Vpos [8] ) + ( GND ) + ( \video_module|Add1~18  ))
+// \video_module|Add1~6  = CARRY(( \video_module|Vpos [8] ) + ( GND ) + ( \video_module|Add1~18  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Vpos [8]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~18 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~5_sumout ),
+	.cout(\video_module|Add1~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~5 .extended_lut = "off";
+defparam \video_module|Add1~5 .lut_mask = 64'h0000FFFF00003333;
+defparam \video_module|Add1~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N25
+dffeas \video_module|Vpos[8] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~5_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [8]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[8] .is_wysiwyg = "true";
+defparam \video_module|Vpos[8] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N27
+cyclonev_lcell_comb \video_module|Add1~1 (
+// Equation(s):
+// \video_module|Add1~1_sumout  = SUM(( \video_module|Vpos [9] ) + ( GND ) + ( \video_module|Add1~6  ))
+// \video_module|Add1~2  = CARRY(( \video_module|Vpos [9] ) + ( GND ) + ( \video_module|Add1~6  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [9]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~1_sumout ),
+	.cout(\video_module|Add1~2 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~1 .extended_lut = "off";
+defparam \video_module|Add1~1 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add1~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N30
+cyclonev_lcell_comb \video_module|Add1~13 (
+// Equation(s):
+// \video_module|Add1~13_sumout  = SUM(( \video_module|Vpos [10] ) + ( GND ) + ( \video_module|Add1~2  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [10]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add1~2 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add1~13_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add1~13 .extended_lut = "off";
+defparam \video_module|Add1~13 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add1~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N31
+dffeas \video_module|Vpos[10] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~13_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [10]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[10] .is_wysiwyg = "true";
+defparam \video_module|Vpos[10] .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N45
+cyclonev_lcell_comb \video_module|Equal0~0 (
+// Equation(s):
+// \video_module|Equal0~0_combout  = ( !\video_module|Vpos [10] & ( (!\video_module|Vpos [4] & (!\video_module|Vpos[6]~DUPLICATE_q  & !\video_module|Vpos [7])) ) )
+
+	.dataa(!\video_module|Vpos [4]),
+	.datab(gnd),
+	.datac(!\video_module|Vpos[6]~DUPLICATE_q ),
+	.datad(!\video_module|Vpos [7]),
+	.datae(gnd),
+	.dataf(!\video_module|Vpos [10]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Equal0~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Equal0~0 .extended_lut = "off";
+defparam \video_module|Equal0~0 .lut_mask = 64'hA000A00000000000;
+defparam \video_module|Equal0~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N36
+cyclonev_lcell_comb \video_module|Equal0~2 (
+// Equation(s):
+// \video_module|Equal0~2_combout  = ( !\video_module|Vpos [3] & ( (\video_module|Vpos[9]~DUPLICATE_q  & (\video_module|Vpos [5] & \video_module|Vpos [8])) ) )
+
+	.dataa(!\video_module|Vpos[9]~DUPLICATE_q ),
+	.datab(!\video_module|Vpos [5]),
+	.datac(!\video_module|Vpos [8]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Vpos [3]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Equal0~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Equal0~2 .extended_lut = "off";
+defparam \video_module|Equal0~2 .lut_mask = 64'h0101010100000000;
+defparam \video_module|Equal0~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N51
+cyclonev_lcell_comb \video_module|Equal0~1 (
+// Equation(s):
+// \video_module|Equal0~1_combout  = (!\video_module|Vpos[0]~DUPLICATE_q  & \video_module|Vpos[1]~DUPLICATE_q )
+
+	.dataa(!\video_module|Vpos[0]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!\video_module|Vpos[1]~DUPLICATE_q ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Equal0~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Equal0~1 .extended_lut = "off";
+defparam \video_module|Equal0~1 .lut_mask = 64'h00AA00AA00AA00AA;
+defparam \video_module|Equal0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N48
+cyclonev_lcell_comb \video_module|Equal0~3 (
+// Equation(s):
+// \video_module|Equal0~3_combout  = ( \video_module|Vpos [2] & ( (\video_module|Equal0~0_combout  & (\video_module|Equal0~2_combout  & \video_module|Equal0~1_combout )) ) )
+
+	.dataa(gnd),
+	.datab(!\video_module|Equal0~0_combout ),
+	.datac(!\video_module|Equal0~2_combout ),
+	.datad(!\video_module|Equal0~1_combout ),
+	.datae(gnd),
+	.dataf(!\video_module|Vpos [2]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Equal0~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Equal0~3 .extended_lut = "off";
+defparam \video_module|Equal0~3 .lut_mask = 64'h0000000000030003;
+defparam \video_module|Equal0~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N28
+dffeas \video_module|Vpos[9] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~1_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [9]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[9] .is_wysiwyg = "true";
+defparam \video_module|Vpos[9] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N29
+dffeas \video_module|Vpos[9]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~1_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos[9]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[9]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Vpos[9]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N42
+cyclonev_lcell_comb \video_module|always0~2 (
+// Equation(s):
+// \video_module|always0~2_combout  = ( \video_module|Vpos [3] & ( (!\video_module|Vpos [2] & (!\video_module|Vpos[0]~DUPLICATE_q  & !\video_module|Vpos[1]~DUPLICATE_q )) ) ) # ( !\video_module|Vpos [3] & ( ((\video_module|Vpos[0]~DUPLICATE_q  & 
+// \video_module|Vpos[1]~DUPLICATE_q )) # (\video_module|Vpos [2]) ) )
+
+	.dataa(gnd),
+	.datab(!\video_module|Vpos [2]),
+	.datac(!\video_module|Vpos[0]~DUPLICATE_q ),
+	.datad(!\video_module|Vpos[1]~DUPLICATE_q ),
+	.datae(gnd),
+	.dataf(!\video_module|Vpos [3]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~2 .extended_lut = "off";
+defparam \video_module|always0~2 .lut_mask = 64'h333F333FC000C000;
+defparam \video_module|always0~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y76_N39
+cyclonev_lcell_comb \video_module|always0~3 (
+// Equation(s):
+// \video_module|always0~3_combout  = ( \video_module|Vpos [8] ) # ( !\video_module|Vpos [8] & ( (((!\video_module|always0~2_combout ) # (!\video_module|Equal0~0_combout )) # (\video_module|Vpos [5])) # (\video_module|Vpos[9]~DUPLICATE_q ) ) )
+
+	.dataa(!\video_module|Vpos[9]~DUPLICATE_q ),
+	.datab(!\video_module|Vpos [5]),
+	.datac(!\video_module|always0~2_combout ),
+	.datad(!\video_module|Equal0~0_combout ),
+	.datae(gnd),
+	.dataf(!\video_module|Vpos [8]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~3 .extended_lut = "off";
+defparam \video_module|always0~3 .lut_mask = 64'hFFF7FFF7FFFFFFFF;
+defparam \video_module|always0~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N40
+dffeas \video_module|Vsync (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|always0~3_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vsync~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vsync .is_wysiwyg = "true";
+defparam \video_module|Vsync .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N35
+dffeas \video_module|posX[3] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Hpos[3]~DUPLICATE_q ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[3] .is_wysiwyg = "true";
+defparam \video_module|posX[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N13
+dffeas \video_module|Hpos[4]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~5_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[4]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[4]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[4]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N44
+dffeas \video_module|posX[4] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Hpos[4]~DUPLICATE_q ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[4] .is_wysiwyg = "true";
+defparam \video_module|posX[4] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N32
+dffeas \video_module|posX[5] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Hpos [5]),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[5] .is_wysiwyg = "true";
+defparam \video_module|posX[5] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N7
+dffeas \video_module|Hpos[2]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~41_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos[2]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[2]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Hpos[2]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N20
+dffeas \video_module|posX[2] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Hpos[2]~DUPLICATE_q ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[2] .is_wysiwyg = "true";
+defparam \video_module|posX[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N4
+dffeas \video_module|Hpos[1] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~33_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[1] .is_wysiwyg = "true";
+defparam \video_module|Hpos[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N7
+dffeas \video_module|posX[1] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Hpos [1]),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[1] .is_wysiwyg = "true";
+defparam \video_module|posX[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N41
+dffeas \video_module|posX[0] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Hpos [0]),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[0] .is_wysiwyg = "true";
+defparam \video_module|posX[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N21
+cyclonev_lcell_comb \video_module|LessThan11~0 (
+// Equation(s):
+// \video_module|LessThan11~0_combout  = ( \video_module|posX [1] & ( \video_module|posX [0] & ( (\video_module|posX [3] & (\video_module|posX [4] & (\video_module|posX [5] & \video_module|posX [2]))) ) ) ) # ( !\video_module|posX [1] & ( \video_module|posX 
+// [0] & ( (\video_module|posX [3] & (\video_module|posX [4] & (\video_module|posX [5] & \video_module|posX [2]))) ) ) ) # ( \video_module|posX [1] & ( !\video_module|posX [0] & ( (\video_module|posX [3] & (\video_module|posX [4] & (\video_module|posX [5] & 
+// \video_module|posX [2]))) ) ) )
+
+	.dataa(!\video_module|posX [3]),
+	.datab(!\video_module|posX [4]),
+	.datac(!\video_module|posX [5]),
+	.datad(!\video_module|posX [2]),
+	.datae(!\video_module|posX [1]),
+	.dataf(!\video_module|posX [0]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|LessThan11~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|LessThan11~0 .extended_lut = "off";
+defparam \video_module|LessThan11~0 .lut_mask = 64'h0000000100010001;
+defparam \video_module|LessThan11~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N26
+dffeas \video_module|Hpos[8] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~29_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [8]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[8] .is_wysiwyg = "true";
+defparam \video_module|Hpos[8] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N48
+cyclonev_lcell_comb \video_module|always0~10 (
+// Equation(s):
+// \video_module|always0~10_combout  = ( !\video_module|Hpos [6] & ( !\video_module|Hpos[7]~DUPLICATE_q  ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos[7]~DUPLICATE_q ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [6]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~10_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~10 .extended_lut = "off";
+defparam \video_module|always0~10 .lut_mask = 64'hF0F0F0F000000000;
+defparam \video_module|always0~10 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N51
+cyclonev_lcell_comb \video_module|Add3~3 (
+// Equation(s):
+// \video_module|Add3~3_combout  = ( \video_module|Hpos [9] & ( (\video_module|Hpos [8] & !\video_module|always0~10_combout ) ) ) # ( !\video_module|Hpos [9] & ( (!\video_module|Hpos [8]) # (\video_module|always0~10_combout ) ) )
+
+	.dataa(!\video_module|Hpos [8]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!\video_module|always0~10_combout ),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [9]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Add3~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add3~3 .extended_lut = "off";
+defparam \video_module|Add3~3 .lut_mask = 64'hAAFFAAFF55005500;
+defparam \video_module|Add3~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N53
+dffeas \video_module|posX[9] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add3~3_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [9]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[9] .is_wysiwyg = "true";
+defparam \video_module|posX[9] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N48
+cyclonev_lcell_comb \video_module|always0~9 (
+// Equation(s):
+// \video_module|always0~9_combout  = ( !\video_module|posX [3] & ( (!\video_module|posX [4] & !\video_module|posX [2]) ) )
+
+	.dataa(gnd),
+	.datab(!\video_module|posX [4]),
+	.datac(!\video_module|posX [2]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|posX [3]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~9_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~9 .extended_lut = "off";
+defparam \video_module|always0~9 .lut_mask = 64'hC0C0C0C000000000;
+defparam \video_module|always0~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N57
+cyclonev_lcell_comb \video_module|LessThan0~1 (
+// Equation(s):
+// \video_module|LessThan0~1_combout  = ( !\video_module|Hpos [9] & ( (!\video_module|Hpos[8]~DUPLICATE_q ) # ((!\video_module|Hpos [6] & !\video_module|Hpos[7]~DUPLICATE_q )) ) )
+
+	.dataa(!\video_module|Hpos [6]),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(gnd),
+	.datad(!\video_module|Hpos[7]~DUPLICATE_q ),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [9]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|LessThan0~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|LessThan0~1 .extended_lut = "off";
+defparam \video_module|LessThan0~1 .lut_mask = 64'hEECCEECC00000000;
+defparam \video_module|LessThan0~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N51
+cyclonev_lcell_comb \video_module|Add3~2 (
+// Equation(s):
+// \video_module|Add3~2_combout  = ( \video_module|Hpos [10] & ( !\video_module|LessThan0~1_combout  ) ) # ( !\video_module|Hpos [10] & ( \video_module|LessThan0~1_combout  ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|LessThan0~1_combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [10]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Add3~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add3~2 .extended_lut = "off";
+defparam \video_module|Add3~2 .lut_mask = 64'h0F0F0F0FF0F0F0F0;
+defparam \video_module|Add3~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N53
+dffeas \video_module|posX[10] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add3~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [10]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[10] .is_wysiwyg = "true";
+defparam \video_module|posX[10] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X23_Y77_N22
+dffeas \video_module|Hpos[7] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add0~13_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|LessThan0~0_combout ),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Hpos [7]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Hpos[7] .is_wysiwyg = "true";
+defparam \video_module|Hpos[7] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N0
+cyclonev_lcell_comb \video_module|Add3~1 (
+// Equation(s):
+// \video_module|Add3~1_combout  = ( \video_module|Hpos [6] & ( \video_module|Hpos [7] ) ) # ( !\video_module|Hpos [6] & ( !\video_module|Hpos [7] ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [7]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [6]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Add3~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add3~1 .extended_lut = "off";
+defparam \video_module|Add3~1 .lut_mask = 64'hF0F0F0F00F0F0F0F;
+defparam \video_module|Add3~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N2
+dffeas \video_module|posX[7] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add3~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [7]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[7] .is_wysiwyg = "true";
+defparam \video_module|posX[7] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N57
+cyclonev_lcell_comb \video_module|Add3~0 (
+// Equation(s):
+// \video_module|Add3~0_combout  = ( \video_module|always0~10_combout  & ( \video_module|Hpos[8]~DUPLICATE_q  ) ) # ( !\video_module|always0~10_combout  & ( !\video_module|Hpos[8]~DUPLICATE_q  ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|always0~10_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Add3~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add3~0 .extended_lut = "off";
+defparam \video_module|Add3~0 .lut_mask = 64'hF0F0F0F00F0F0F0F;
+defparam \video_module|Add3~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N59
+dffeas \video_module|posX[8] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add3~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [8]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[8] .is_wysiwyg = "true";
+defparam \video_module|posX[8] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N36
+cyclonev_lcell_comb \video_module|posX[6]~1 (
+// Equation(s):
+// \video_module|posX[6]~1_combout  = ( !\video_module|Hpos [6] )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [6]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|posX[6]~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|posX[6]~1 .extended_lut = "off";
+defparam \video_module|posX[6]~1 .lut_mask = 64'hFFFFFFFF00000000;
+defparam \video_module|posX[6]~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y77_N38
+dffeas \video_module|posX[6] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|posX[6]~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posX [6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posX[6] .is_wysiwyg = "true";
+defparam \video_module|posX[6] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N54
+cyclonev_lcell_comb \video_module|always0~5 (
+// Equation(s):
+// \video_module|always0~5_combout  = (\video_module|posX [7] & (\video_module|posX [8] & \video_module|posX [6]))
+
+	.dataa(!\video_module|posX [7]),
+	.datab(!\video_module|posX [8]),
+	.datac(!\video_module|posX [6]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~5_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~5 .extended_lut = "off";
+defparam \video_module|always0~5 .lut_mask = 64'h0101010101010101;
+defparam \video_module|always0~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N51
+cyclonev_lcell_comb \video_module|R~0 (
+// Equation(s):
+// \video_module|R~0_combout  = ( !\video_module|posX [5] & ( (!\video_module|posX [7] & (!\video_module|posX [8] & !\video_module|posX [6])) ) )
+
+	.dataa(!\video_module|posX [7]),
+	.datab(gnd),
+	.datac(!\video_module|posX [8]),
+	.datad(!\video_module|posX [6]),
+	.datae(gnd),
+	.dataf(!\video_module|posX [5]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|R~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|R~0 .extended_lut = "off";
+defparam \video_module|R~0 .lut_mask = 64'hA000A00000000000;
+defparam \video_module|R~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N24
+cyclonev_lcell_comb \video_module|R~1 (
+// Equation(s):
+// \video_module|R~1_combout  = ( \video_module|always0~5_combout  & ( \video_module|R~0_combout  & ( (!\video_module|posX [10] & ((!\video_module|posX [9] & (\video_module|LessThan11~0_combout )) # (\video_module|posX [9] & ((\video_module|always0~9_combout 
+// ))))) ) ) ) # ( !\video_module|always0~5_combout  & ( \video_module|R~0_combout  & ( (\video_module|posX [9] & (\video_module|always0~9_combout  & !\video_module|posX [10])) ) ) ) # ( \video_module|always0~5_combout  & ( !\video_module|R~0_combout  & ( 
+// (\video_module|LessThan11~0_combout  & (!\video_module|posX [9] & !\video_module|posX [10])) ) ) )
+
+	.dataa(!\video_module|LessThan11~0_combout ),
+	.datab(!\video_module|posX [9]),
+	.datac(!\video_module|always0~9_combout ),
+	.datad(!\video_module|posX [10]),
+	.datae(!\video_module|always0~5_combout ),
+	.dataf(!\video_module|R~0_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|R~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|R~1 .extended_lut = "off";
+defparam \video_module|R~1 .lut_mask = 64'h0000440003004700;
+defparam \video_module|R~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N7
+dffeas \video_module|Vpos[2]~DUPLICATE (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~33_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos[2]~DUPLICATE_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[2]~DUPLICATE .is_wysiwyg = "true";
+defparam \video_module|Vpos[2]~DUPLICATE .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N4
+dffeas \video_module|Vpos[1] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~37_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[1] .is_wysiwyg = "true";
+defparam \video_module|Vpos[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N0
+cyclonev_lcell_comb \video_module|Add5~29 (
+// Equation(s):
+// \video_module|Add5~29_sumout  = SUM(( \video_module|Vpos [1] ) + ( VCC ) + ( !VCC ))
+// \video_module|Add5~30  = CARRY(( \video_module|Vpos [1] ) + ( VCC ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [1]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~29_sumout ),
+	.cout(\video_module|Add5~30 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~29 .extended_lut = "off";
+defparam \video_module|Add5~29 .lut_mask = 64'h0000000000000F0F;
+defparam \video_module|Add5~29 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N3
+cyclonev_lcell_comb \video_module|Add5~25 (
+// Equation(s):
+// \video_module|Add5~25_sumout  = SUM(( \video_module|Vpos[2]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add5~30  ))
+// \video_module|Add5~26  = CARRY(( \video_module|Vpos[2]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add5~30  ))
+
+	.dataa(!\video_module|Vpos[2]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~30 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~25_sumout ),
+	.cout(\video_module|Add5~26 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~25 .extended_lut = "off";
+defparam \video_module|Add5~25 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add5~25 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N6
+cyclonev_lcell_comb \video_module|Add5~21 (
+// Equation(s):
+// \video_module|Add5~21_sumout  = SUM(( \video_module|Vpos [3] ) + ( VCC ) + ( \video_module|Add5~26  ))
+// \video_module|Add5~22  = CARRY(( \video_module|Vpos [3] ) + ( VCC ) + ( \video_module|Add5~26  ))
+
+	.dataa(!\video_module|Vpos [3]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~26 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~21_sumout ),
+	.cout(\video_module|Add5~22 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~21 .extended_lut = "off";
+defparam \video_module|Add5~21 .lut_mask = 64'h0000000000005555;
+defparam \video_module|Add5~21 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N9
+cyclonev_lcell_comb \video_module|Add5~17 (
+// Equation(s):
+// \video_module|Add5~17_sumout  = SUM(( \video_module|Vpos [4] ) + ( VCC ) + ( \video_module|Add5~22  ))
+// \video_module|Add5~18  = CARRY(( \video_module|Vpos [4] ) + ( VCC ) + ( \video_module|Add5~22  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Vpos [4]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~22 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~17_sumout ),
+	.cout(\video_module|Add5~18 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~17 .extended_lut = "off";
+defparam \video_module|Add5~17 .lut_mask = 64'h0000000000000F0F;
+defparam \video_module|Add5~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N12
+cyclonev_lcell_comb \video_module|Add5~13 (
+// Equation(s):
+// \video_module|Add5~13_sumout  = SUM(( \video_module|Vpos [5] ) + ( GND ) + ( \video_module|Add5~18  ))
+// \video_module|Add5~14  = CARRY(( \video_module|Vpos [5] ) + ( GND ) + ( \video_module|Add5~18  ))
+
+	.dataa(!\video_module|Vpos [5]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~18 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~13_sumout ),
+	.cout(\video_module|Add5~14 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~13 .extended_lut = "off";
+defparam \video_module|Add5~13 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add5~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N15
+cyclonev_lcell_comb \video_module|Add5~9 (
+// Equation(s):
+// \video_module|Add5~9_sumout  = SUM(( \video_module|Vpos[6]~DUPLICATE_q  ) + ( VCC ) + ( \video_module|Add5~14  ))
+// \video_module|Add5~10  = CARRY(( \video_module|Vpos[6]~DUPLICATE_q  ) + ( VCC ) + ( \video_module|Add5~14  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Vpos[6]~DUPLICATE_q ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~14 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~9_sumout ),
+	.cout(\video_module|Add5~10 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~9 .extended_lut = "off";
+defparam \video_module|Add5~9 .lut_mask = 64'h0000000000003333;
+defparam \video_module|Add5~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N18
+cyclonev_lcell_comb \video_module|Add5~5 (
+// Equation(s):
+// \video_module|Add5~5_sumout  = SUM(( \video_module|Vpos [7] ) + ( VCC ) + ( \video_module|Add5~10  ))
+// \video_module|Add5~6  = CARRY(( \video_module|Vpos [7] ) + ( VCC ) + ( \video_module|Add5~10  ))
+
+	.dataa(!\video_module|Vpos [7]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~10 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~5_sumout ),
+	.cout(\video_module|Add5~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~5 .extended_lut = "off";
+defparam \video_module|Add5~5 .lut_mask = 64'h0000000000005555;
+defparam \video_module|Add5~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N21
+cyclonev_lcell_comb \video_module|Add5~41 (
+// Equation(s):
+// \video_module|Add5~41_sumout  = SUM(( \video_module|Vpos [8] ) + ( VCC ) + ( \video_module|Add5~6  ))
+// \video_module|Add5~42  = CARRY(( \video_module|Vpos [8] ) + ( VCC ) + ( \video_module|Add5~6  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Vpos [8]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~41_sumout ),
+	.cout(\video_module|Add5~42 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~41 .extended_lut = "off";
+defparam \video_module|Add5~41 .lut_mask = 64'h0000000000003333;
+defparam \video_module|Add5~41 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N24
+cyclonev_lcell_comb \video_module|Add5~37 (
+// Equation(s):
+// \video_module|Add5~37_sumout  = SUM(( \video_module|Vpos[9]~DUPLICATE_q  ) + ( VCC ) + ( \video_module|Add5~42  ))
+// \video_module|Add5~38  = CARRY(( \video_module|Vpos[9]~DUPLICATE_q  ) + ( VCC ) + ( \video_module|Add5~42  ))
+
+	.dataa(!\video_module|Vpos[9]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~42 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~37_sumout ),
+	.cout(\video_module|Add5~38 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~37 .extended_lut = "off";
+defparam \video_module|Add5~37 .lut_mask = 64'h0000000000005555;
+defparam \video_module|Add5~37 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N27
+cyclonev_lcell_comb \video_module|Add5~33 (
+// Equation(s):
+// \video_module|Add5~33_sumout  = SUM(( \video_module|Vpos [10] ) + ( VCC ) + ( \video_module|Add5~38  ))
+// \video_module|Add5~34  = CARRY(( \video_module|Vpos [10] ) + ( VCC ) + ( \video_module|Add5~38  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Vpos [10]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~38 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~33_sumout ),
+	.cout(\video_module|Add5~34 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~33 .extended_lut = "off";
+defparam \video_module|Add5~33 .lut_mask = 64'h0000000000003333;
+defparam \video_module|Add5~33 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N30
+cyclonev_lcell_comb \video_module|Add5~1 (
+// Equation(s):
+// \video_module|Add5~1_sumout  = SUM(( VCC ) + ( GND ) + ( \video_module|Add5~34  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add5~34 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add5~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add5~1 .extended_lut = "off";
+defparam \video_module|Add5~1 .lut_mask = 64'h0000FFFF0000FFFF;
+defparam \video_module|Add5~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N0
+cyclonev_lcell_comb \video_module|Add6~5 (
+// Equation(s):
+// \video_module|Add6~5_sumout  = SUM(( \video_module|Add5~25_sumout  ) + ( !VCC ) + ( !VCC ))
+// \video_module|Add6~6  = CARRY(( \video_module|Add5~25_sumout  ) + ( !VCC ) + ( !VCC ))
+// \video_module|Add6~7  = SHARE(VCC)
+
+	.dataa(gnd),
+	.datab(!\video_module|Add5~25_sumout ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add6~5_sumout ),
+	.cout(\video_module|Add6~6 ),
+	.shareout(\video_module|Add6~7 ));
+// synopsys translate_off
+defparam \video_module|Add6~5 .extended_lut = "off";
+defparam \video_module|Add6~5 .lut_mask = 64'h0000FFFF00003333;
+defparam \video_module|Add6~5 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N3
+cyclonev_lcell_comb \video_module|Add6~9 (
+// Equation(s):
+// \video_module|Add6~9_sumout  = SUM(( !\video_module|Add5~21_sumout  ) + ( \video_module|Add6~7  ) + ( \video_module|Add6~6  ))
+// \video_module|Add6~10  = CARRY(( !\video_module|Add5~21_sumout  ) + ( \video_module|Add6~7  ) + ( \video_module|Add6~6  ))
+// \video_module|Add6~11  = SHARE(\video_module|Add5~21_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!\video_module|Add5~21_sumout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~6 ),
+	.sharein(\video_module|Add6~7 ),
+	.combout(),
+	.sumout(\video_module|Add6~9_sumout ),
+	.cout(\video_module|Add6~10 ),
+	.shareout(\video_module|Add6~11 ));
+// synopsys translate_off
+defparam \video_module|Add6~9 .extended_lut = "off";
+defparam \video_module|Add6~9 .lut_mask = 64'h000000FF0000FF00;
+defparam \video_module|Add6~9 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N6
+cyclonev_lcell_comb \video_module|Add6~17 (
+// Equation(s):
+// \video_module|Add6~17_sumout  = SUM(( !\video_module|Add5~17_sumout  ) + ( \video_module|Add6~11  ) + ( \video_module|Add6~10  ))
+// \video_module|Add6~18  = CARRY(( !\video_module|Add5~17_sumout  ) + ( \video_module|Add6~11  ) + ( \video_module|Add6~10  ))
+// \video_module|Add6~19  = SHARE(\video_module|Add5~17_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~17_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~10 ),
+	.sharein(\video_module|Add6~11 ),
+	.combout(),
+	.sumout(\video_module|Add6~17_sumout ),
+	.cout(\video_module|Add6~18 ),
+	.shareout(\video_module|Add6~19 ));
+// synopsys translate_off
+defparam \video_module|Add6~17 .extended_lut = "off";
+defparam \video_module|Add6~17 .lut_mask = 64'h00000F0F0000F0F0;
+defparam \video_module|Add6~17 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N9
+cyclonev_lcell_comb \video_module|Add6~21 (
+// Equation(s):
+// \video_module|Add6~21_sumout  = SUM(( !\video_module|Add5~13_sumout  ) + ( \video_module|Add6~19  ) + ( \video_module|Add6~18  ))
+// \video_module|Add6~22  = CARRY(( !\video_module|Add5~13_sumout  ) + ( \video_module|Add6~19  ) + ( \video_module|Add6~18  ))
+// \video_module|Add6~23  = SHARE(\video_module|Add5~13_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~13_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~18 ),
+	.sharein(\video_module|Add6~19 ),
+	.combout(),
+	.sumout(\video_module|Add6~21_sumout ),
+	.cout(\video_module|Add6~22 ),
+	.shareout(\video_module|Add6~23 ));
+// synopsys translate_off
+defparam \video_module|Add6~21 .extended_lut = "off";
+defparam \video_module|Add6~21 .lut_mask = 64'h00000F0F0000F0F0;
+defparam \video_module|Add6~21 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N12
+cyclonev_lcell_comb \video_module|Add6~13 (
+// Equation(s):
+// \video_module|Add6~13_sumout  = SUM(( !\video_module|Add5~9_sumout  ) + ( \video_module|Add6~23  ) + ( \video_module|Add6~22  ))
+// \video_module|Add6~14  = CARRY(( !\video_module|Add5~9_sumout  ) + ( \video_module|Add6~23  ) + ( \video_module|Add6~22  ))
+// \video_module|Add6~15  = SHARE(\video_module|Add5~9_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~9_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~22 ),
+	.sharein(\video_module|Add6~23 ),
+	.combout(),
+	.sumout(\video_module|Add6~13_sumout ),
+	.cout(\video_module|Add6~14 ),
+	.shareout(\video_module|Add6~15 ));
+// synopsys translate_off
+defparam \video_module|Add6~13 .extended_lut = "off";
+defparam \video_module|Add6~13 .lut_mask = 64'h00000F0F0000F0F0;
+defparam \video_module|Add6~13 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N15
+cyclonev_lcell_comb \video_module|Add6~25 (
+// Equation(s):
+// \video_module|Add6~25_sumout  = SUM(( \video_module|Add5~5_sumout  ) + ( \video_module|Add6~15  ) + ( \video_module|Add6~14  ))
+// \video_module|Add6~26  = CARRY(( \video_module|Add5~5_sumout  ) + ( \video_module|Add6~15  ) + ( \video_module|Add6~14  ))
+// \video_module|Add6~27  = SHARE(GND)
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!\video_module|Add5~5_sumout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~14 ),
+	.sharein(\video_module|Add6~15 ),
+	.combout(),
+	.sumout(\video_module|Add6~25_sumout ),
+	.cout(\video_module|Add6~26 ),
+	.shareout(\video_module|Add6~27 ));
+// synopsys translate_off
+defparam \video_module|Add6~25 .extended_lut = "off";
+defparam \video_module|Add6~25 .lut_mask = 64'h00000000000000FF;
+defparam \video_module|Add6~25 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N18
+cyclonev_lcell_comb \video_module|Add6~29 (
+// Equation(s):
+// \video_module|Add6~29_sumout  = SUM(( \video_module|Add5~41_sumout  ) + ( \video_module|Add6~27  ) + ( \video_module|Add6~26  ))
+// \video_module|Add6~30  = CARRY(( \video_module|Add5~41_sumout  ) + ( \video_module|Add6~27  ) + ( \video_module|Add6~26  ))
+// \video_module|Add6~31  = SHARE(GND)
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~41_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~26 ),
+	.sharein(\video_module|Add6~27 ),
+	.combout(),
+	.sumout(\video_module|Add6~29_sumout ),
+	.cout(\video_module|Add6~30 ),
+	.shareout(\video_module|Add6~31 ));
+// synopsys translate_off
+defparam \video_module|Add6~29 .extended_lut = "off";
+defparam \video_module|Add6~29 .lut_mask = 64'h0000000000000F0F;
+defparam \video_module|Add6~29 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N21
+cyclonev_lcell_comb \video_module|Add6~33 (
+// Equation(s):
+// \video_module|Add6~33_sumout  = SUM(( !\video_module|Add5~37_sumout  ) + ( \video_module|Add6~31  ) + ( \video_module|Add6~30  ))
+// \video_module|Add6~34  = CARRY(( !\video_module|Add5~37_sumout  ) + ( \video_module|Add6~31  ) + ( \video_module|Add6~30  ))
+// \video_module|Add6~35  = SHARE(\video_module|Add5~37_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~37_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~30 ),
+	.sharein(\video_module|Add6~31 ),
+	.combout(),
+	.sumout(\video_module|Add6~33_sumout ),
+	.cout(\video_module|Add6~34 ),
+	.shareout(\video_module|Add6~35 ));
+// synopsys translate_off
+defparam \video_module|Add6~33 .extended_lut = "off";
+defparam \video_module|Add6~33 .lut_mask = 64'h00000F0F0000F0F0;
+defparam \video_module|Add6~33 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N24
+cyclonev_lcell_comb \video_module|Add6~37 (
+// Equation(s):
+// \video_module|Add6~37_sumout  = SUM(( !\video_module|Add5~33_sumout  ) + ( \video_module|Add6~35  ) + ( \video_module|Add6~34  ))
+// \video_module|Add6~38  = CARRY(( !\video_module|Add5~33_sumout  ) + ( \video_module|Add6~35  ) + ( \video_module|Add6~34  ))
+// \video_module|Add6~39  = SHARE(\video_module|Add5~33_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~33_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~34 ),
+	.sharein(\video_module|Add6~35 ),
+	.combout(),
+	.sumout(\video_module|Add6~37_sumout ),
+	.cout(\video_module|Add6~38 ),
+	.shareout(\video_module|Add6~39 ));
+// synopsys translate_off
+defparam \video_module|Add6~37 .extended_lut = "off";
+defparam \video_module|Add6~37 .lut_mask = 64'h00000F0F0000F0F0;
+defparam \video_module|Add6~37 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N27
+cyclonev_lcell_comb \video_module|Add6~41 (
+// Equation(s):
+// \video_module|Add6~41_sumout  = SUM(( !\video_module|Add5~1_sumout  ) + ( \video_module|Add6~39  ) + ( \video_module|Add6~38  ))
+// \video_module|Add6~42  = CARRY(( !\video_module|Add5~1_sumout  ) + ( \video_module|Add6~39  ) + ( \video_module|Add6~38  ))
+// \video_module|Add6~43  = SHARE(\video_module|Add5~1_sumout )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(!\video_module|Add5~1_sumout ),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~38 ),
+	.sharein(\video_module|Add6~39 ),
+	.combout(),
+	.sumout(\video_module|Add6~41_sumout ),
+	.cout(\video_module|Add6~42 ),
+	.shareout(\video_module|Add6~43 ));
+// synopsys translate_off
+defparam \video_module|Add6~41 .extended_lut = "off";
+defparam \video_module|Add6~41 .lut_mask = 64'h000000FF0000FF00;
+defparam \video_module|Add6~41 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N30
+cyclonev_lcell_comb \video_module|Add6~1 (
+// Equation(s):
+// \video_module|Add6~1_sumout  = SUM(( !\video_module|Add5~1_sumout  ) + ( \video_module|Add6~43  ) + ( \video_module|Add6~42  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add5~1_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add6~42 ),
+	.sharein(\video_module|Add6~43 ),
+	.combout(),
+	.sumout(\video_module|Add6~1_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add6~1 .extended_lut = "off";
+defparam \video_module|Add6~1 .lut_mask = 64'h000000000000F0F0;
+defparam \video_module|Add6~1 .shared_arith = "on";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N20
+dffeas \video_module|posY[7] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~5_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [7]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[7] .is_wysiwyg = "true";
+defparam \video_module|posY[7] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N17
+dffeas \video_module|posY[6] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~9_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[6] .is_wysiwyg = "true";
+defparam \video_module|posY[6] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N39
+cyclonev_lcell_comb \video_module|LessThan15~1 (
+// Equation(s):
+// \video_module|LessThan15~1_combout  = ( !\video_module|posY [6] & ( !\video_module|posY [7] ) )
+
+	.dataa(!\video_module|posY [7]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|posY [6]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|LessThan15~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|LessThan15~1 .extended_lut = "off";
+defparam \video_module|LessThan15~1 .lut_mask = 64'hAAAAAAAA00000000;
+defparam \video_module|LessThan15~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N11
+dffeas \video_module|posY[4] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~17_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[4] .is_wysiwyg = "true";
+defparam \video_module|posY[4] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N14
+dffeas \video_module|posY[5] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~13_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[5] .is_wysiwyg = "true";
+defparam \video_module|posY[5] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N36
+cyclonev_lcell_comb \video_module|always0~6 (
+// Equation(s):
+// \video_module|always0~6_combout  = ( \video_module|posY [5] & ( (\video_module|posY [7] & \video_module|posY [6]) ) ) # ( !\video_module|posY [5] & ( (\video_module|posY [7] & (\video_module|posY [6] & \video_module|posY [4])) ) )
+
+	.dataa(!\video_module|posY [7]),
+	.datab(!\video_module|posY [6]),
+	.datac(!\video_module|posY [4]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|posY [5]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~6_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~6 .extended_lut = "off";
+defparam \video_module|always0~6 .lut_mask = 64'h0101010111111111;
+defparam \video_module|always0~6 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N5
+dffeas \video_module|posY[2] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~25_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[2] .is_wysiwyg = "true";
+defparam \video_module|posY[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N2
+dffeas \video_module|posY[1] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~29_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[1] .is_wysiwyg = "true";
+defparam \video_module|posY[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N8
+dffeas \video_module|posY[3] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~21_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[3] .is_wysiwyg = "true";
+defparam \video_module|posY[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X25_Y76_N1
+dffeas \video_module|Vpos[0] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add1~41_sumout ),
+	.asdata(vcc),
+	.clrn(!\SW[9]~input_o ),
+	.aload(gnd),
+	.sclr(\video_module|Equal0~3_combout ),
+	.sload(gnd),
+	.ena(\video_module|LessThan0~0_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|Vpos [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|Vpos[0] .is_wysiwyg = "true";
+defparam \video_module|Vpos[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N44
+dffeas \video_module|posY[0] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(gnd),
+	.asdata(\video_module|Vpos [0]),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[0] .is_wysiwyg = "true";
+defparam \video_module|posY[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N42
+cyclonev_lcell_comb \video_module|LessThan15~0 (
+// Equation(s):
+// \video_module|LessThan15~0_combout  = ( \video_module|posY [0] & ( \video_module|posY [5] & ( \video_module|posY [4] ) ) ) # ( !\video_module|posY [0] & ( \video_module|posY [5] & ( (\video_module|posY [4] & (((\video_module|posY [3]) # 
+// (\video_module|posY [1])) # (\video_module|posY [2]))) ) ) )
+
+	.dataa(!\video_module|posY [2]),
+	.datab(!\video_module|posY [4]),
+	.datac(!\video_module|posY [1]),
+	.datad(!\video_module|posY [3]),
+	.datae(!\video_module|posY [0]),
+	.dataf(!\video_module|posY [5]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|LessThan15~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|LessThan15~0 .extended_lut = "off";
+defparam \video_module|LessThan15~0 .lut_mask = 64'h0000000013333333;
+defparam \video_module|LessThan15~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N6
+cyclonev_lcell_comb \video_module|always0~4 (
+// Equation(s):
+// \video_module|always0~4_combout  = ( \video_module|posX [1] & ( \video_module|posX [0] & ( (\video_module|posX [4] & (!\video_module|posX [5] & ((\video_module|posX [3]) # (\video_module|posX [2])))) ) ) ) # ( !\video_module|posX [1] & ( 
+// \video_module|posX [0] & ( (!\video_module|posX [4] & (!\video_module|posX [2] & (!\video_module|posX [3] & \video_module|posX [5]))) # (\video_module|posX [4] & (((\video_module|posX [3] & !\video_module|posX [5])))) ) ) ) # ( \video_module|posX [1] & ( 
+// !\video_module|posX [0] & ( (\video_module|posX [4] & (\video_module|posX [3] & !\video_module|posX [5])) ) ) ) # ( !\video_module|posX [1] & ( !\video_module|posX [0] & ( (!\video_module|posX [4] & (!\video_module|posX [2] & (!\video_module|posX [3] & 
+// \video_module|posX [5]))) # (\video_module|posX [4] & (((\video_module|posX [3] & !\video_module|posX [5])))) ) ) )
+
+	.dataa(!\video_module|posX [2]),
+	.datab(!\video_module|posX [4]),
+	.datac(!\video_module|posX [3]),
+	.datad(!\video_module|posX [5]),
+	.datae(!\video_module|posX [1]),
+	.dataf(!\video_module|posX [0]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~4_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~4 .extended_lut = "off";
+defparam \video_module|always0~4 .lut_mask = 64'h0380030003801300;
+defparam \video_module|always0~4 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N26
+dffeas \video_module|posY[9] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~37_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [9]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[9] .is_wysiwyg = "true";
+defparam \video_module|posY[9] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N29
+dffeas \video_module|posY[10] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~33_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [10]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[10] .is_wysiwyg = "true";
+defparam \video_module|posY[10] .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X24_Y76_N23
+dffeas \video_module|posY[8] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|Add5~41_sumout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|posY [8]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|posY[8] .is_wysiwyg = "true";
+defparam \video_module|posY[8] .power_up = "low";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y76_N48
+cyclonev_lcell_comb \video_module|always0~7 (
+// Equation(s):
+// \video_module|always0~7_combout  = ( !\video_module|posX [10] & ( (!\video_module|posY [9] & (\video_module|posX [9] & (!\video_module|posY [10] & \video_module|posY [8]))) ) )
+
+	.dataa(!\video_module|posY [9]),
+	.datab(!\video_module|posX [9]),
+	.datac(!\video_module|posY [10]),
+	.datad(!\video_module|posY [8]),
+	.datae(gnd),
+	.dataf(!\video_module|posX [10]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~7_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~7 .extended_lut = "off";
+defparam \video_module|always0~7 .lut_mask = 64'h0020002000000000;
+defparam \video_module|always0~7 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X24_Y77_N12
+cyclonev_lcell_comb \video_module|always0~8 (
+// Equation(s):
+// \video_module|always0~8_combout  = ( \video_module|always0~5_combout  & ( \video_module|always0~7_combout  & ( (!\video_module|always0~6_combout  & (\video_module|always0~4_combout  & ((!\video_module|LessThan15~1_combout ) # 
+// (\video_module|LessThan15~0_combout )))) ) ) )
+
+	.dataa(!\video_module|LessThan15~1_combout ),
+	.datab(!\video_module|always0~6_combout ),
+	.datac(!\video_module|LessThan15~0_combout ),
+	.datad(!\video_module|always0~4_combout ),
+	.datae(!\video_module|always0~5_combout ),
+	.dataf(!\video_module|always0~7_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|always0~8_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|always0~8 .extended_lut = "off";
+defparam \video_module|always0~8 .lut_mask = 64'h000000000000008C;
+defparam \video_module|always0~8 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N42
+cyclonev_lcell_comb \video_module|draw~0 (
+// Equation(s):
+// \video_module|draw~0_combout  = ( \video_module|Add6~5_sumout  & ( \video_module|Add6~17_sumout  & ( \video_module|Add6~13_sumout  ) ) ) # ( !\video_module|Add6~5_sumout  & ( \video_module|Add6~17_sumout  & ( \video_module|Add6~13_sumout  ) ) ) # ( 
+// \video_module|Add6~5_sumout  & ( !\video_module|Add6~17_sumout  & ( (\video_module|Add6~13_sumout  & \video_module|Add6~21_sumout ) ) ) ) # ( !\video_module|Add6~5_sumout  & ( !\video_module|Add6~17_sumout  & ( (!\video_module|Add6~13_sumout  & 
+// (!\video_module|Add6~9_sumout  & (\video_module|Equal0~1_combout  & !\video_module|Add6~21_sumout ))) # (\video_module|Add6~13_sumout  & (((\video_module|Add6~21_sumout )))) ) ) )
+
+	.dataa(!\video_module|Add6~9_sumout ),
+	.datab(!\video_module|Add6~13_sumout ),
+	.datac(!\video_module|Equal0~1_combout ),
+	.datad(!\video_module|Add6~21_sumout ),
+	.datae(!\video_module|Add6~5_sumout ),
+	.dataf(!\video_module|Add6~17_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|draw~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|draw~0 .extended_lut = "off";
+defparam \video_module|draw~0 .lut_mask = 64'h0833003333333333;
+defparam \video_module|draw~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X23_Y77_N54
+cyclonev_lcell_comb \video_module|Add3~4 (
+// Equation(s):
+// \video_module|Add3~4_combout  = ( \video_module|Hpos [9] ) # ( !\video_module|Hpos [9] & ( ((\video_module|Hpos[8]~DUPLICATE_q  & ((\video_module|Hpos[7]~DUPLICATE_q ) # (\video_module|Hpos [6])))) # (\video_module|Hpos [10]) ) )
+
+	.dataa(!\video_module|Hpos [6]),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(!\video_module|Hpos [10]),
+	.datad(!\video_module|Hpos[7]~DUPLICATE_q ),
+	.datae(gnd),
+	.dataf(!\video_module|Hpos [9]),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|Add3~4_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add3~4 .extended_lut = "off";
+defparam \video_module|Add3~4 .lut_mask = 64'h1F3F1F3FFFFFFFFF;
+defparam \video_module|Add3~4 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N0
+cyclonev_lcell_comb \video_module|Add4~13 (
+// Equation(s):
+// \video_module|Add4~13_sumout  = SUM(( \video_module|Hpos[2]~DUPLICATE_q  ) + ( \video_module|Hpos[1]~DUPLICATE_q  ) + ( !VCC ))
+// \video_module|Add4~14  = CARRY(( \video_module|Hpos[2]~DUPLICATE_q  ) + ( \video_module|Hpos[1]~DUPLICATE_q  ) + ( !VCC ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos[2]~DUPLICATE_q ),
+	.datac(!\video_module|Hpos[1]~DUPLICATE_q ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~13_sumout ),
+	.cout(\video_module|Add4~14 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~13 .extended_lut = "off";
+defparam \video_module|Add4~13 .lut_mask = 64'h0000F0F000003333;
+defparam \video_module|Add4~13 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N3
+cyclonev_lcell_comb \video_module|Add4~17 (
+// Equation(s):
+// \video_module|Add4~17_sumout  = SUM(( \video_module|Hpos[3]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add4~14  ))
+// \video_module|Add4~18  = CARRY(( \video_module|Hpos[3]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add4~14  ))
+
+	.dataa(!\video_module|Hpos[3]~DUPLICATE_q ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~14 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~17_sumout ),
+	.cout(\video_module|Add4~18 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~17 .extended_lut = "off";
+defparam \video_module|Add4~17 .lut_mask = 64'h0000FFFF00005555;
+defparam \video_module|Add4~17 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N6
+cyclonev_lcell_comb \video_module|Add4~21 (
+// Equation(s):
+// \video_module|Add4~21_sumout  = SUM(( \video_module|Hpos[4]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add4~18  ))
+// \video_module|Add4~22  = CARRY(( \video_module|Hpos[4]~DUPLICATE_q  ) + ( GND ) + ( \video_module|Add4~18  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos[4]~DUPLICATE_q ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~18 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~21_sumout ),
+	.cout(\video_module|Add4~22 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~21 .extended_lut = "off";
+defparam \video_module|Add4~21 .lut_mask = 64'h0000FFFF00000F0F;
+defparam \video_module|Add4~21 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N9
+cyclonev_lcell_comb \video_module|Add4~25 (
+// Equation(s):
+// \video_module|Add4~25_sumout  = SUM(( \video_module|Hpos[5]~DUPLICATE_q  ) + ( VCC ) + ( \video_module|Add4~22  ))
+// \video_module|Add4~26  = CARRY(( \video_module|Hpos[5]~DUPLICATE_q  ) + ( VCC ) + ( \video_module|Add4~22  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Hpos[5]~DUPLICATE_q ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~22 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~25_sumout ),
+	.cout(\video_module|Add4~26 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~25 .extended_lut = "off";
+defparam \video_module|Add4~25 .lut_mask = 64'h0000000000000F0F;
+defparam \video_module|Add4~25 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N12
+cyclonev_lcell_comb \video_module|Add4~1 (
+// Equation(s):
+// \video_module|Add4~1_sumout  = SUM(( !\video_module|Hpos [6] ) + ( VCC ) + ( \video_module|Add4~26  ))
+// \video_module|Add4~2  = CARRY(( !\video_module|Hpos [6] ) + ( VCC ) + ( \video_module|Add4~26  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos [6]),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~26 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~1_sumout ),
+	.cout(\video_module|Add4~2 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~1 .extended_lut = "off";
+defparam \video_module|Add4~1 .lut_mask = 64'h000000000000CCCC;
+defparam \video_module|Add4~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N15
+cyclonev_lcell_comb \video_module|Add4~37 (
+// Equation(s):
+// \video_module|Add4~37_sumout  = SUM(( !\video_module|Hpos [6] $ (\video_module|Hpos [7]) ) + ( VCC ) + ( \video_module|Add4~2  ))
+// \video_module|Add4~38  = CARRY(( !\video_module|Hpos [6] $ (\video_module|Hpos [7]) ) + ( VCC ) + ( \video_module|Add4~2  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos [6]),
+	.datac(gnd),
+	.datad(!\video_module|Hpos [7]),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~2 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~37_sumout ),
+	.cout(\video_module|Add4~38 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~37 .extended_lut = "off";
+defparam \video_module|Add4~37 .lut_mask = 64'h000000000000CC33;
+defparam \video_module|Add4~37 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N18
+cyclonev_lcell_comb \video_module|Add4~41 (
+// Equation(s):
+// \video_module|Add4~41_sumout  = SUM(( !\video_module|Hpos[8]~DUPLICATE_q  $ (\video_module|always0~10_combout ) ) + ( VCC ) + ( \video_module|Add4~38  ))
+// \video_module|Add4~42  = CARRY(( !\video_module|Hpos[8]~DUPLICATE_q  $ (\video_module|always0~10_combout ) ) + ( VCC ) + ( \video_module|Add4~38  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(!\video_module|always0~10_combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~38 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~41_sumout ),
+	.cout(\video_module|Add4~42 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~41 .extended_lut = "off";
+defparam \video_module|Add4~41 .lut_mask = 64'h000000000000C3C3;
+defparam \video_module|Add4~41 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N21
+cyclonev_lcell_comb \video_module|Add4~29 (
+// Equation(s):
+// \video_module|Add4~29_sumout  = SUM(( VCC ) + ( !\video_module|Hpos [9] $ (((\video_module|Hpos[8]~DUPLICATE_q  & !\video_module|always0~10_combout ))) ) + ( \video_module|Add4~42  ))
+// \video_module|Add4~30  = CARRY(( VCC ) + ( !\video_module|Hpos [9] $ (((\video_module|Hpos[8]~DUPLICATE_q  & !\video_module|always0~10_combout ))) ) + ( \video_module|Add4~42  ))
+
+	.dataa(!\video_module|Hpos [9]),
+	.datab(!\video_module|Hpos[8]~DUPLICATE_q ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|always0~10_combout ),
+	.datag(gnd),
+	.cin(\video_module|Add4~42 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~29_sumout ),
+	.cout(\video_module|Add4~30 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~29 .extended_lut = "off";
+defparam \video_module|Add4~29 .lut_mask = 64'h000066550000FFFF;
+defparam \video_module|Add4~29 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N24
+cyclonev_lcell_comb \video_module|Add4~33 (
+// Equation(s):
+// \video_module|Add4~33_sumout  = SUM(( !\video_module|LessThan0~1_combout  $ (!\video_module|Hpos [10]) ) + ( VCC ) + ( \video_module|Add4~30  ))
+// \video_module|Add4~34  = CARRY(( !\video_module|LessThan0~1_combout  $ (!\video_module|Hpos [10]) ) + ( VCC ) + ( \video_module|Add4~30  ))
+
+	.dataa(!\video_module|LessThan0~1_combout ),
+	.datab(gnd),
+	.datac(!\video_module|Hpos [10]),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~30 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~33_sumout ),
+	.cout(\video_module|Add4~34 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~33 .extended_lut = "off";
+defparam \video_module|Add4~33 .lut_mask = 64'h0000000000005A5A;
+defparam \video_module|Add4~33 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N27
+cyclonev_lcell_comb \video_module|Add4~5 (
+// Equation(s):
+// \video_module|Add4~5_sumout  = SUM(( !\video_module|Add3~4_combout  ) + ( VCC ) + ( \video_module|Add4~34  ))
+// \video_module|Add4~6  = CARRY(( !\video_module|Add3~4_combout  ) + ( VCC ) + ( \video_module|Add4~34  ))
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add3~4_combout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~34 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~5_sumout ),
+	.cout(\video_module|Add4~6 ),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~5 .extended_lut = "off";
+defparam \video_module|Add4~5 .lut_mask = 64'h000000000000F0F0;
+defparam \video_module|Add4~5 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N30
+cyclonev_lcell_comb \video_module|Add4~9 (
+// Equation(s):
+// \video_module|Add4~9_sumout  = SUM(( !\video_module|Add3~4_combout  ) + ( VCC ) + ( \video_module|Add4~6  ))
+
+	.dataa(gnd),
+	.datab(!\video_module|Add3~4_combout ),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(\video_module|Add4~6 ),
+	.sharein(gnd),
+	.combout(),
+	.sumout(\video_module|Add4~9_sumout ),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|Add4~9 .extended_lut = "off";
+defparam \video_module|Add4~9 .lut_mask = 64'h000000000000CCCC;
+defparam \video_module|Add4~9 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N36
+cyclonev_lcell_comb \video_module|draw~1 (
+// Equation(s):
+// \video_module|draw~1_combout  = ( \video_module|Add4~13_sumout  & ( !\video_module|Add4~21_sumout  & ( (!\video_module|Add4~17_sumout  & !\video_module|Add4~25_sumout ) ) ) ) # ( !\video_module|Add4~13_sumout  & ( !\video_module|Add4~21_sumout  & ( 
+// (!\video_module|Add4~25_sumout  & (((!\video_module|Hpos[1]~DUPLICATE_q ) # (\video_module|Hpos [0])) # (\video_module|Add4~17_sumout ))) ) ) )
+
+	.dataa(!\video_module|Add4~17_sumout ),
+	.datab(!\video_module|Hpos [0]),
+	.datac(!\video_module|Hpos[1]~DUPLICATE_q ),
+	.datad(!\video_module|Add4~25_sumout ),
+	.datae(!\video_module|Add4~13_sumout ),
+	.dataf(!\video_module|Add4~21_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|draw~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|draw~1 .extended_lut = "off";
+defparam \video_module|draw~1 .lut_mask = 64'hF700AA0000000000;
+defparam \video_module|draw~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N42
+cyclonev_lcell_comb \video_module|draw~2 (
+// Equation(s):
+// \video_module|draw~2_combout  = ( !\video_module|Add6~29_sumout  & ( !\video_module|Add6~25_sumout  & ( (!\video_module|Add4~5_sumout  & (!\video_module|Add4~9_sumout  & (\video_module|draw~1_combout  & !\video_module|Add4~1_sumout ))) ) ) )
+
+	.dataa(!\video_module|Add4~5_sumout ),
+	.datab(!\video_module|Add4~9_sumout ),
+	.datac(!\video_module|draw~1_combout ),
+	.datad(!\video_module|Add4~1_sumout ),
+	.datae(!\video_module|Add6~29_sumout ),
+	.dataf(!\video_module|Add6~25_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|draw~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|draw~2 .extended_lut = "off";
+defparam \video_module|draw~2 .lut_mask = 64'h0800000000000000;
+defparam \video_module|draw~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X25_Y77_N48
+cyclonev_lcell_comb \video_module|draw~3 (
+// Equation(s):
+// \video_module|draw~3_combout  = ( !\video_module|Add4~37_sumout  & ( !\video_module|Add4~41_sumout  ) )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(!\video_module|Add4~41_sumout ),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(!\video_module|Add4~37_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|draw~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|draw~3 .extended_lut = "off";
+defparam \video_module|draw~3 .lut_mask = 64'hF0F0F0F000000000;
+defparam \video_module|draw~3 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N48
+cyclonev_lcell_comb \video_module|draw~4 (
+// Equation(s):
+// \video_module|draw~4_combout  = ( !\video_module|Add6~41_sumout  & ( !\video_module|Add6~37_sumout  & ( (!\video_module|Add6~33_sumout  & (\video_module|draw~3_combout  & (!\video_module|Add4~29_sumout  & !\video_module|Add4~33_sumout ))) ) ) )
+
+	.dataa(!\video_module|Add6~33_sumout ),
+	.datab(!\video_module|draw~3_combout ),
+	.datac(!\video_module|Add4~29_sumout ),
+	.datad(!\video_module|Add4~33_sumout ),
+	.datae(!\video_module|Add6~41_sumout ),
+	.dataf(!\video_module|Add6~37_sumout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|draw~4_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|draw~4 .extended_lut = "off";
+defparam \video_module|draw~4 .lut_mask = 64'h2000000000000000;
+defparam \video_module|draw~4 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: LABCELL_X27_Y77_N36
+cyclonev_lcell_comb \video_module|R~2 (
+// Equation(s):
+// \video_module|R~2_combout  = ( \video_module|draw~2_combout  & ( \video_module|draw~4_combout  & ( (((!\video_module|Add6~1_sumout  & !\video_module|draw~0_combout )) # (\video_module|always0~8_combout )) # (\video_module|R~1_combout ) ) ) ) # ( 
+// !\video_module|draw~2_combout  & ( \video_module|draw~4_combout  & ( (\video_module|always0~8_combout ) # (\video_module|R~1_combout ) ) ) ) # ( \video_module|draw~2_combout  & ( !\video_module|draw~4_combout  & ( (\video_module|always0~8_combout ) # 
+// (\video_module|R~1_combout ) ) ) ) # ( !\video_module|draw~2_combout  & ( !\video_module|draw~4_combout  & ( (\video_module|always0~8_combout ) # (\video_module|R~1_combout ) ) ) )
+
+	.dataa(!\video_module|R~1_combout ),
+	.datab(!\video_module|Add6~1_sumout ),
+	.datac(!\video_module|always0~8_combout ),
+	.datad(!\video_module|draw~0_combout ),
+	.datae(!\video_module|draw~2_combout ),
+	.dataf(!\video_module|draw~4_combout ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\video_module|R~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \video_module|R~2 .extended_lut = "off";
+defparam \video_module|R~2 .lut_mask = 64'h5F5F5F5F5F5FDF5F;
+defparam \video_module|R~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: FF_X27_Y77_N38
+dffeas \video_module|B[0] (
+	.clk(\vgaclk|video_pll_0|video_pll|altera_pll_i|outclk_wire[1]~CLKENA0_outclk ),
+	.d(\video_module|R~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(!\SW[9]~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\video_module|B [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \video_module|B[0] .is_wysiwyg = "true";
+defparam \video_module|B[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X36_Y0_N1
+cyclonev_io_ibuf \KEY[0]~input (
+	.i(KEY[0]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\KEY[0]~input_o ));
+// synopsys translate_off
+defparam \KEY[0]~input .bus_hold = "false";
+defparam \KEY[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X36_Y0_N18
+cyclonev_io_ibuf \KEY[1]~input (
+	.i(KEY[1]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\KEY[1]~input_o ));
+// synopsys translate_off
+defparam \KEY[1]~input .bus_hold = "false";
+defparam \KEY[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X40_Y0_N1
+cyclonev_io_ibuf \KEY[2]~input (
+	.i(KEY[2]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\KEY[2]~input_o ));
+// synopsys translate_off
+defparam \KEY[2]~input .bus_hold = "false";
+defparam \KEY[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X40_Y0_N18
+cyclonev_io_ibuf \KEY[3]~input (
+	.i(KEY[3]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\KEY[3]~input_o ));
+// synopsys translate_off
+defparam \KEY[3]~input .bus_hold = "false";
+defparam \KEY[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X12_Y0_N18
+cyclonev_io_ibuf \SW[0]~input (
+	.i(SW[0]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[0]~input_o ));
+// synopsys translate_off
+defparam \SW[0]~input .bus_hold = "false";
+defparam \SW[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X16_Y0_N1
+cyclonev_io_ibuf \SW[1]~input (
+	.i(SW[1]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[1]~input_o ));
+// synopsys translate_off
+defparam \SW[1]~input .bus_hold = "false";
+defparam \SW[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X8_Y0_N35
+cyclonev_io_ibuf \SW[2]~input (
+	.i(SW[2]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[2]~input_o ));
+// synopsys translate_off
+defparam \SW[2]~input .bus_hold = "false";
+defparam \SW[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X4_Y0_N52
+cyclonev_io_ibuf \SW[3]~input (
+	.i(SW[3]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[3]~input_o ));
+// synopsys translate_off
+defparam \SW[3]~input .bus_hold = "false";
+defparam \SW[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X2_Y0_N41
+cyclonev_io_ibuf \SW[4]~input (
+	.i(SW[4]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[4]~input_o ));
+// synopsys translate_off
+defparam \SW[4]~input .bus_hold = "false";
+defparam \SW[4]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X16_Y0_N18
+cyclonev_io_ibuf \SW[5]~input (
+	.i(SW[5]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[5]~input_o ));
+// synopsys translate_off
+defparam \SW[5]~input .bus_hold = "false";
+defparam \SW[5]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X4_Y0_N35
+cyclonev_io_ibuf \SW[6]~input (
+	.i(SW[6]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[6]~input_o ));
+// synopsys translate_off
+defparam \SW[6]~input .bus_hold = "false";
+defparam \SW[6]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X4_Y0_N1
+cyclonev_io_ibuf \SW[7]~input (
+	.i(SW[7]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[7]~input_o ));
+// synopsys translate_off
+defparam \SW[7]~input .bus_hold = "false";
+defparam \SW[7]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X4_Y0_N18
+cyclonev_io_ibuf \SW[8]~input (
+	.i(SW[8]),
+	.ibar(gnd),
+	.dynamicterminationcontrol(gnd),
+	.o(\SW[8]~input_o ));
+// synopsys translate_off
+defparam \SW[8]~input .bus_hold = "false";
+defparam \SW[8]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LABCELL_X56_Y17_N0
+cyclonev_lcell_comb \~QUARTUS_CREATED_GND~I (
+// Equation(s):
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(gnd),
+	.datae(gnd),
+	.dataf(gnd),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\~QUARTUS_CREATED_GND~I_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \~QUARTUS_CREATED_GND~I .extended_lut = "off";
+defparam \~QUARTUS_CREATED_GND~I .lut_mask = 64'h0000000000000000;
+defparam \~QUARTUS_CREATED_GND~I .shared_arith = "off";
+// synopsys translate_on
+
+
+altera_pll_reconfig_tasks pll_reconfig_inst_tasks();
+// synopsys translate_off
+defparam pll_reconfig_inst_tasks .number_of_fplls = 1;
+// synopsys translate_on
+
+endmodule
