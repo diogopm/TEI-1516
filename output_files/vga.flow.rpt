@@ -1,5 +1,5 @@
 Flow report for vga
-Thu Mar 10 11:10:40 2016
+Mon Mar 14 11:44:29 2016
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Lite Edition
 
 
@@ -41,19 +41,19 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Thu Mar 10 11:10:40 2016       ;
+; Flow Status                     ; Successful - Mon Mar 14 11:44:29 2016       ;
 ; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Lite Edition ;
 ; Revision Name                   ; vga                                         ;
 ; Top-level Entity Name           ; vga                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 51 / 32,070 ( < 1 % )                       ;
-; Total registers                 ; 59                                          ;
+; Logic utilization (in ALMs)     ; 238 / 32,070 ( < 1 % )                      ;
+; Total registers                 ; 98                                          ;
 ; Total pins                      ; 42 / 457 ( 9 % )                            ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                       ;
-; Total DSP Blocks                ; 0 / 87 ( 0 % )                              ;
+; Total DSP Blocks                ; 4 / 87 ( 5 % )                              ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
 ; Total HSSI TX PCSs              ; 0                                           ;
@@ -68,7 +68,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/10/2016 11:09:22 ;
+; Start date & time ; 03/14/2016 11:43:04 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; vga                 ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ agreement for further details.
 +-------------------------------------+-------------------------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+-------------------------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 164143905090.145760816102316                          ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 164143905090.145795578409692                          ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                                           ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)                             ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                    ; --            ; --          ; --             ;
@@ -104,12 +104,12 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 899 MB              ; 00:00:24                           ;
-; Fitter                    ; 00:00:33     ; 1.0                     ; 2667 MB             ; 00:00:58                           ;
-; Assembler                 ; 00:00:10     ; 1.0                     ; 890 MB              ; 00:00:10                           ;
-; TimeQuest Timing Analyzer ; 00:00:06     ; 1.6                     ; 1234 MB             ; 00:00:06                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 901 MB              ; 00:00:02                           ;
-; Total                     ; 00:01:01     ; --                      ; --                  ; 00:01:40                           ;
+; Analysis & Synthesis      ; 00:00:12     ; 1.0                     ; 910 MB              ; 00:00:26                           ;
+; Fitter                    ; 00:00:38     ; 1.1                     ; 2679 MB             ; 00:01:13                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 895 MB              ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:06     ; 1.0                     ; 1237 MB             ; 00:00:07                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 908 MB              ; 00:00:02                           ;
+; Total                     ; 00:01:07     ; --                      ; --                  ; 00:01:58                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
