@@ -3,6 +3,7 @@ module vga (
 	output VGA_HS, VGA_VS,
 	output [7:0] VGA_R, VGA_G, VGA_B,
 	output VGA_CLK,
+	output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5,
 	input [3:0] KEY,
 	input [9:0] SW
 );
@@ -20,6 +21,12 @@ video video_module(
 	.R(VGA_R),
 	.G(VGA_G),
 	.B(VGA_B),
+	.HEX0(HEX0),
+	.HEX1(HEX1),
+	.HEX2(HEX2),
+	.HEX3(HEX3),
+	.HEX4(HEX4),
+	.HEX5(HEX5),
 	.KEYS(KEY),
 	.FUNC(SW[3:0])
 );
