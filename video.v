@@ -200,18 +200,9 @@ begin
 								// Ball movement Y
 								if ((ballY + BALL_SIZE/2) + 100 <= V_RES + 100 && (ballY - BALL_SIZE/2) + 100 >= 0 + 100)
 									ballY = ballY + vSpeed - 4;
-								else
+								else vSpeed = calculateSpeedY(vSpeed);
 								begin
-									case (vSpeed)
-										1: vSpeed = 7;
-										2: vSpeed = 6;
-										3: vSpeed = 5;
-										4: vSpeed = 4;
-										5: vSpeed = 3;
-										6: vSpeed = 2;
-										7: vSpeed = 1;
-										default: vSpeed = 4;
-									endcase
+									vSpeed = calculateSpeedY(vSpeed);
 									ballY = ballY + vSpeed - 4;
 								end
 								

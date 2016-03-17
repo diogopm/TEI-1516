@@ -1,5 +1,5 @@
 Analysis & Synthesis report for vga
-Thu Mar 17 02:02:12 2016
+Thu Mar 17 12:01:56 2016
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Lite Edition
 
 
@@ -61,7 +61,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Mar 17 02:02:12 2016       ;
+; Analysis & Synthesis Status     ; Successful - Thu Mar 17 12:01:55 2016       ;
 ; Quartus Prime Version           ; 15.1.0 Build 185 10/21/2015 SJ Lite Edition ;
 ; Revision Name                   ; vga                                         ;
 ; Top-level Entity Name           ; vga                                         ;
@@ -222,14 +222,14 @@ agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 627         ;
+; Estimate of Logic utilization (ALMs needed) ; 622         ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 1211        ;
-;     -- 7 input functions                    ; 4           ;
-;     -- 6 input functions                    ; 38          ;
-;     -- 5 input functions                    ; 122         ;
-;     -- 4 input functions                    ; 198         ;
-;     -- <=3 input functions                  ; 849         ;
+; Combinational ALUT usage for logic          ; 1207        ;
+;     -- 7 input functions                    ; 3           ;
+;     -- 6 input functions                    ; 33          ;
+;     -- 5 input functions                    ; 126         ;
+;     -- 4 input functions                    ; 190         ;
+;     -- <=3 input functions                  ; 855         ;
 ;                                             ;             ;
 ; Dedicated logic registers                   ; 135         ;
 ;                                             ;             ;
@@ -242,8 +242,8 @@ agreement for further details.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; SW[9]~input ;
 ; Maximum fan-out                             ; 137         ;
-; Total fan-out                               ; 4515        ;
-; Average fan-out                             ; 2.97        ;
+; Total fan-out                               ; 4491        ;
+; Average fan-out                             ; 2.96        ;
 +---------------------------------------------+-------------+
 
 
@@ -252,15 +252,15 @@ agreement for further details.
 +------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                     ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+--------------+
-; |vga                                           ; 1211 (0)          ; 135 (0)      ; 0                 ; 4          ; 84   ; 0            ; |vga                                                                                                                    ; work         ;
+; |vga                                           ; 1207 (0)          ; 135 (0)      ; 0                 ; 4          ; 84   ; 0            ; |vga                                                                                                                    ; work         ;
 ;    |pll:vgaclk|                                ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|pll:vgaclk                                                                                                         ; pll          ;
 ;       |pll_video_pll_0:video_pll_0|            ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|pll:vgaclk|pll_video_pll_0:video_pll_0                                                                             ; pll          ;
 ;          |pll_video_pll_0_video_pll:video_pll| ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|pll:vgaclk|pll_video_pll_0:video_pll_0|pll_video_pll_0_video_pll:video_pll                                         ; pll          ;
 ;             |altera_pll:altera_pll_i|          ; 0 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|pll:vgaclk|pll_video_pll_0:video_pll_0|pll_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i                 ; work         ;
-;    |video:video_module|                        ; 1211 (623)        ; 135 (135)    ; 0                 ; 4          ; 0    ; 0            ; |vga|video:video_module                                                                                                 ; work         ;
-;       |lpm_divide:Div0|                        ; 169 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0                                                                                 ; work         ;
-;          |lpm_divide_bpo:auto_generated|       ; 169 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0|lpm_divide_bpo:auto_generated                                                   ; work         ;
-;             |abs_divider_kbg:divider|          ; 169 (4)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0|lpm_divide_bpo:auto_generated|abs_divider_kbg:divider                           ; work         ;
+;    |video:video_module|                        ; 1207 (617)        ; 135 (135)    ; 0                 ; 4          ; 0    ; 0            ; |vga|video:video_module                                                                                                 ; work         ;
+;       |lpm_divide:Div0|                        ; 171 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0                                                                                 ; work         ;
+;          |lpm_divide_bpo:auto_generated|       ; 171 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0|lpm_divide_bpo:auto_generated                                                   ; work         ;
+;             |abs_divider_kbg:divider|          ; 171 (6)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0|lpm_divide_bpo:auto_generated|abs_divider_kbg:divider                           ; work         ;
 ;                |alt_u_div_ove:divider|         ; 151 (151)         ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0|lpm_divide_bpo:auto_generated|abs_divider_kbg:divider|alt_u_div_ove:divider     ; work         ;
 ;                |lpm_abs_4p9:my_abs_num|        ; 14 (14)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div0|lpm_divide_bpo:auto_generated|abs_divider_kbg:divider|lpm_abs_4p9:my_abs_num    ; work         ;
 ;       |lpm_divide:Div1|                        ; 169 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |vga|video:video_module|lpm_divide:Div1                                                                                 ; work         ;
@@ -337,7 +337,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 135   ;
-; Number of registers using Synchronous Clear  ; 39    ;
+; Number of registers using Synchronous Clear  ; 41    ;
 ; Number of registers using Synchronous Load   ; 14    ;
 ; Number of registers using Asynchronous Clear ; 110   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -358,7 +358,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; video:video_module|player2Y[1]          ; 8       ;
 ; video:video_module|player2Y[2]          ; 8       ;
 ; video:video_module|player2Y[8]          ; 6       ;
-; video:video_module|player2Y[6]          ; 7       ;
+; video:video_module|player2Y[6]          ; 6       ;
 ; video:video_module|player2Y[4]          ; 6       ;
 ; video:video_module|ballX[9]             ; 6       ;
 ; video:video_module|player1Y[1]          ; 5       ;
@@ -367,8 +367,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; video:video_module|player1Y[6]          ; 4       ;
 ; video:video_module|player1Y[4]          ; 4       ;
 ; video:video_module|ballY[7]             ; 10      ;
-; video:video_module|ballY[8]             ; 10      ;
-; video:video_module|vSpeed[2]            ; 5       ;
+; video:video_module|ballY[8]             ; 11      ;
+; video:video_module|vSpeed[2]            ; 1       ;
 ; Total number of inverted registers = 18 ;         ;
 +-----------------------------------------+---------+
 
@@ -378,11 +378,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |vga|video:video_module|Vpos[6]     ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |vga|video:video_module|player1Y[5] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |vga|video:video_module|ballY[1]    ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |vga|video:video_module|Vpos[2]     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |vga|video:video_module|player1Y[7] ;
 ; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |vga|video:video_module|player2Y[3] ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |vga|video:video_module|player1Y[1] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |vga|video:video_module|player1Y[6] ;
 ; 6:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |vga|video:video_module|player2Y[1] ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |vga|video:video_module|hit         ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |vga|video:video_module|hit         ;
@@ -878,38 +877,38 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; arriav_ff             ; 135                         ;
 ;     CLR SCLR          ; 11                          ;
 ;     ENA               ; 25                          ;
-;     ENA CLR           ; 57                          ;
-;     ENA CLR SCLR      ; 28                          ;
+;     ENA CLR           ; 55                          ;
+;     ENA CLR SCLR      ; 30                          ;
 ;     ENA CLR SLD       ; 14                          ;
-; arriav_lcell_comb     ; 1217                        ;
-;     arith             ; 734                         ;
+; arriav_lcell_comb     ; 1213                        ;
+;     arith             ; 714                         ;
 ;         0 data inputs ; 96                          ;
-;         1 data inputs ; 244                         ;
+;         1 data inputs ; 228                         ;
 ;         2 data inputs ; 150                         ;
 ;         3 data inputs ; 95                          ;
-;         4 data inputs ; 120                         ;
-;         5 data inputs ; 29                          ;
-;     extend            ; 4                           ;
-;         7 data inputs ; 4                           ;
-;     normal            ; 434                         ;
+;         4 data inputs ; 112                         ;
+;         5 data inputs ; 33                          ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 440                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 16                          ;
 ;         2 data inputs ; 151                         ;
-;         3 data inputs ; 56                          ;
+;         3 data inputs ; 67                          ;
 ;         4 data inputs ; 78                          ;
 ;         5 data inputs ; 93                          ;
-;         6 data inputs ; 38                          ;
-;     shared            ; 45                          ;
+;         6 data inputs ; 33                          ;
+;     shared            ; 56                          ;
 ;         0 data inputs ; 5                           ;
-;         1 data inputs ; 15                          ;
-;         2 data inputs ; 11                          ;
+;         1 data inputs ; 23                          ;
+;         2 data inputs ; 14                          ;
 ;         3 data inputs ; 14                          ;
 ; arriav_mac            ; 4                           ;
 ; boundary_port         ; 84                          ;
 ; generic_pll           ; 2                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 40.60                       ;
-; Average LUT depth     ; 23.13                       ;
+; Average LUT depth     ; 23.08                       ;
 +-----------------------+-----------------------------+
 
 
@@ -918,7 +917,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:10     ;
 +----------------+--------------+
 
 
@@ -928,7 +927,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Lite Edition
-    Info: Processing started: Thu Mar 17 02:01:55 2016
+    Info: Processing started: Thu Mar 17 12:01:07 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga -c vga
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file pll/synthesis/pll.v
@@ -941,7 +940,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll/syn
     Info (12023): Found entity 1: pll_video_pll_0_video_pll File: D:/Repositorios/TEI-1516/pll/synthesis/submodules/pll_video_pll_0_video_pll.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
     Info (12023): Found entity 1: vga File: D:/Repositorios/TEI-1516/vga.v Line: 1
-Warning (10463): Verilog HDL Declaration warning at video.v(262): "type" is SystemVerilog-2005 keyword File: D:/Repositorios/TEI-1516/video.v Line: 262
+Warning (10463): Verilog HDL Declaration warning at video.v(253): "type" is SystemVerilog-2005 keyword File: D:/Repositorios/TEI-1516/video.v Line: 253
 Info (12021): Found 1 design units, including 1 entities, in source file video.v
     Info (12023): Found entity 1: video File: D:/Repositorios/TEI-1516/video.v Line: 1
 Info (12127): Elaborating entity "vga" for the top level hierarchy
@@ -956,27 +955,29 @@ Warning (10230): Verilog HDL assignment warning at video.v(70): truncated value 
 Warning (10230): Verilog HDL assignment warning at video.v(71): truncated value with size 11 to match size of target (3) File: D:/Repositorios/TEI-1516/video.v Line: 71
 Warning (10230): Verilog HDL assignment warning at video.v(107): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 107
 Warning (10230): Verilog HDL assignment warning at video.v(108): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 108
-Warning (10776): Verilog HDL warning at video.v(284): variable hit in static task or function hit may have unintended latch behavior File: D:/Repositorios/TEI-1516/video.v Line: 284
-Warning (10241): Verilog HDL Function Declaration warning at video.v(284): function "hit" may return a Don't Care value because its output register may not be assigned a value in every possible path through the function File: D:/Repositorios/TEI-1516/video.v Line: 284
+Warning (10776): Verilog HDL warning at video.v(275): variable hit in static task or function hit may have unintended latch behavior File: D:/Repositorios/TEI-1516/video.v Line: 275
+Warning (10241): Verilog HDL Function Declaration warning at video.v(275): function "hit" may return a Don't Care value because its output register may not be assigned a value in every possible path through the function File: D:/Repositorios/TEI-1516/video.v Line: 275
 Warning (10230): Verilog HDL assignment warning at video.v(188): truncated value with size 32 to match size of target (3) File: D:/Repositorios/TEI-1516/video.v Line: 188
 Warning (10230): Verilog HDL assignment warning at video.v(189): truncated value with size 32 to match size of target (3) File: D:/Repositorios/TEI-1516/video.v Line: 189
 Warning (10230): Verilog HDL assignment warning at video.v(196): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 196
 Warning (10230): Verilog HDL assignment warning at video.v(197): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 197
 Warning (10230): Verilog HDL assignment warning at video.v(202): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 202
-Warning (10230): Verilog HDL assignment warning at video.v(215): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 215
-Warning (10230): Verilog HDL assignment warning at video.v(220): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 220
-Warning (10230): Verilog HDL assignment warning at video.v(221): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 221
-Warning (10230): Verilog HDL assignment warning at video.v(224): truncated value with size 32 to match size of target (7) File: D:/Repositorios/TEI-1516/video.v Line: 224
-Warning (10230): Verilog HDL assignment warning at video.v(225): truncated value with size 32 to match size of target (7) File: D:/Repositorios/TEI-1516/video.v Line: 225
-Warning (10230): Verilog HDL assignment warning at video.v(226): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 226
-Warning (10230): Verilog HDL assignment warning at video.v(227): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 227
+Warning (10230): Verilog HDL assignment warning at video.v(203): truncated value with size 32 to match size of target (3) File: D:/Repositorios/TEI-1516/video.v Line: 203
+Warning (10230): Verilog HDL assignment warning at video.v(205): truncated value with size 32 to match size of target (3) File: D:/Repositorios/TEI-1516/video.v Line: 205
+Warning (10230): Verilog HDL assignment warning at video.v(206): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 206
+Warning (10230): Verilog HDL assignment warning at video.v(211): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 211
+Warning (10230): Verilog HDL assignment warning at video.v(212): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 212
+Warning (10230): Verilog HDL assignment warning at video.v(215): truncated value with size 32 to match size of target (7) File: D:/Repositorios/TEI-1516/video.v Line: 215
+Warning (10230): Verilog HDL assignment warning at video.v(216): truncated value with size 32 to match size of target (7) File: D:/Repositorios/TEI-1516/video.v Line: 216
+Warning (10230): Verilog HDL assignment warning at video.v(217): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 217
+Warning (10230): Verilog HDL assignment warning at video.v(218): truncated value with size 32 to match size of target (11) File: D:/Repositorios/TEI-1516/video.v Line: 218
 Warning (10240): Verilog HDL Always Construct warning at video.v(49): inferring latch(es) for variable "player1X", which holds its previous value in one or more paths through the always construct File: D:/Repositorios/TEI-1516/video.v Line: 49
 Warning (10240): Verilog HDL Always Construct warning at video.v(49): inferring latch(es) for variable "player1Y", which holds its previous value in one or more paths through the always construct File: D:/Repositorios/TEI-1516/video.v Line: 49
 Warning (10240): Verilog HDL Always Construct warning at video.v(49): inferring latch(es) for variable "player2X", which holds its previous value in one or more paths through the always construct File: D:/Repositorios/TEI-1516/video.v Line: 49
 Warning (10240): Verilog HDL Always Construct warning at video.v(49): inferring latch(es) for variable "player2Y", which holds its previous value in one or more paths through the always construct File: D:/Repositorios/TEI-1516/video.v Line: 49
 Warning (10240): Verilog HDL Always Construct warning at video.v(49): inferring latch(es) for variable "HEX2", which holds its previous value in one or more paths through the always construct File: D:/Repositorios/TEI-1516/video.v Line: 49
 Warning (10240): Verilog HDL Always Construct warning at video.v(49): inferring latch(es) for variable "HEX3", which holds its previous value in one or more paths through the always construct File: D:/Repositorios/TEI-1516/video.v Line: 49
-Warning (10030): Net "hit[2..0]" at video.v(284) has no driver or initial value, using a default initial value '0' File: D:/Repositorios/TEI-1516/video.v Line: 284
+Warning (10030): Net "hit[2..0]" at video.v(275) has no driver or initial value, using a default initial value '0' File: D:/Repositorios/TEI-1516/video.v Line: 275
 Info (10041): Inferred latch for "HEX3[0]" at video.v(49) File: D:/Repositorios/TEI-1516/video.v Line: 49
 Info (10041): Inferred latch for "HEX3[1]" at video.v(49) File: D:/Repositorios/TEI-1516/video.v Line: 49
 Info (10041): Inferred latch for "HEX3[2]" at video.v(49) File: D:/Repositorios/TEI-1516/video.v Line: 49
@@ -1087,15 +1088,15 @@ Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following PLL node(s):
         Warning (14320): Synthesized away node "pll:vgaclk|pll_video_pll_0:video_pll_0|pll_video_pll_0_video_pll:video_pll|altera_pll:altera_pll_i|outclk_wire[2]" File: c:/altera_lite/15.1/quartus/libraries/megafunctions/altera_pll.v Line: 749
 Info (278001): Inferred 7 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Mod0" File: D:/Repositorios/TEI-1516/video.v Line: 251
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div0" File: D:/Repositorios/TEI-1516/video.v Line: 297
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div1" File: D:/Repositorios/TEI-1516/video.v Line: 297
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Mod2" File: D:/Repositorios/TEI-1516/video.v Line: 234
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div3" File: D:/Repositorios/TEI-1516/video.v Line: 233
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Mod1" File: D:/Repositorios/TEI-1516/video.v Line: 232
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div2" File: D:/Repositorios/TEI-1516/video.v Line: 231
-Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Mod0" File: D:/Repositorios/TEI-1516/video.v Line: 251
-Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Mod0" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 251
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Mod0" File: D:/Repositorios/TEI-1516/video.v Line: 242
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div0" File: D:/Repositorios/TEI-1516/video.v Line: 288
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div1" File: D:/Repositorios/TEI-1516/video.v Line: 288
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Mod2" File: D:/Repositorios/TEI-1516/video.v Line: 225
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div3" File: D:/Repositorios/TEI-1516/video.v Line: 224
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Mod1" File: D:/Repositorios/TEI-1516/video.v Line: 223
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "video:video_module|Div2" File: D:/Repositorios/TEI-1516/video.v Line: 222
+Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Mod0" File: D:/Repositorios/TEI-1516/video.v Line: 242
+Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Mod0" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 242
     Info (12134): Parameter "LPM_WIDTHN" = "11"
     Info (12134): Parameter "LPM_WIDTHD" = "5"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -1106,8 +1107,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_mlh File: D:/Repositorios/TEI-1516/db/sign_div_unsign_mlh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ive.tdf
     Info (12023): Found entity 1: alt_u_div_ive File: D:/Repositorios/TEI-1516/db/alt_u_div_ive.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Div0" File: D:/Repositorios/TEI-1516/video.v Line: 297
-Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Div0" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 297
+Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Div0" File: D:/Repositorios/TEI-1516/video.v Line: 288
+Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Div0" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 288
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "5"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
@@ -1123,8 +1124,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_
     Info (12023): Found entity 1: lpm_abs_kn9 File: D:/Repositorios/TEI-1516/db/lpm_abs_kn9.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_4p9.tdf
     Info (12023): Found entity 1: lpm_abs_4p9 File: D:/Repositorios/TEI-1516/db/lpm_abs_4p9.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Mod2" File: D:/Repositorios/TEI-1516/video.v Line: 234
-Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Mod2" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 234
+Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Mod2" File: D:/Repositorios/TEI-1516/video.v Line: 225
+Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Mod2" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 225
     Info (12134): Parameter "LPM_WIDTHN" = "7"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -1135,8 +1136,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_akh File: D:/Repositorios/TEI-1516/db/sign_div_unsign_akh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_qse.tdf
     Info (12023): Found entity 1: alt_u_div_qse File: D:/Repositorios/TEI-1516/db/alt_u_div_qse.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Div3" File: D:/Repositorios/TEI-1516/video.v Line: 233
-Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Div3" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 233
+Info (12130): Elaborated megafunction instantiation "video:video_module|lpm_divide:Div3" File: D:/Repositorios/TEI-1516/video.v Line: 224
+Info (12133): Instantiated megafunction "video:video_module|lpm_divide:Div3" with the following parameter: File: D:/Repositorios/TEI-1516/video.v Line: 224
     Info (12134): Parameter "LPM_WIDTHN" = "7"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -1174,17 +1175,17 @@ Warning (21074): Design contains 8 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[6]" File: D:/Repositorios/TEI-1516/vga.v Line: 9
     Warning (15610): No output dependent on input pin "SW[7]" File: D:/Repositorios/TEI-1516/vga.v Line: 9
     Warning (15610): No output dependent on input pin "SW[8]" File: D:/Repositorios/TEI-1516/vga.v Line: 9
-Info (21057): Implemented 1324 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1319 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 69 output pins
-    Info (21061): Implemented 1234 logic cells
+    Info (21061): Implemented 1229 logic cells
     Info (21065): Implemented 2 PLLs
     Info (21062): Implemented 4 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 61 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 63 warnings
     Info: Peak virtual memory: 920 megabytes
-    Info: Processing ended: Thu Mar 17 02:02:12 2016
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:32
+    Info: Processing ended: Thu Mar 17 12:01:56 2016
+    Info: Elapsed time: 00:00:49
+    Info: Total CPU time (on all processors): 00:01:39
 
 
 +------------------------------------------+
